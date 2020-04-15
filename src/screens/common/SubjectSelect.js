@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import {View, Text, StyleSheet, Picker, ImageBackground} from 'react-native';
 import {FlatList} from 'react-native-gesture-handler';
-import SubjectListItem from '../components/SubjectListItem';
+import SubjectListItem from '../../components/SubjectListItem';
 
 const SubjectSelect = ({navigation}) => {
   const [branch, setBranch] = useState('CSE');
@@ -13,7 +13,7 @@ const SubjectSelect = ({navigation}) => {
   return (
     <View style={styles.container}>
       <ImageBackground
-        source={require('../assets/bg2.png')}
+        source={require('../../assets/bg2.png')}
         style={styles.image}>
         <View style={styles.dropdownDiv}>
           {/* branch selector dropdown */}
