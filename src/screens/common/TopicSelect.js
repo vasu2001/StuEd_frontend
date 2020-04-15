@@ -3,6 +3,7 @@ import {View, Text, StyleSheet, ImageBackground} from 'react-native';
 import StateContext from '../../context/StateContext';
 import {SearchBar} from 'react-native-elements';
 import {FlatList} from 'react-native-gesture-handler';
+import TopicListItem from '../../components/TopicListItem';
 
 const TopicSelect = ({route, navigation}) => {
   const {teacherUI} = useContext(StateContext).data;
@@ -46,9 +47,7 @@ const TopicSelect = ({route, navigation}) => {
             data={topicList.map(item => ({
               key: item,
             }))}
-            renderItem={({item}) => (
-              <Text style={{color: 'black'}}>{item.key}</Text>
-            )}
+            renderItem={({item}) => <TopicListItem topicName={item.key} />}
             keyExtractor={item => item.key}
           />
         </View>
