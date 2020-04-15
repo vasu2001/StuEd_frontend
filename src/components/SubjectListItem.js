@@ -1,12 +1,12 @@
 import React from 'react';
-import {View, Text, Image, StyleSheet} from 'react-native';
+import {Text, Image, StyleSheet} from 'react-native';
 import {TouchableOpacity} from 'react-native-gesture-handler';
 
 const SubjectListItem = ({subjectName, navigation}) => {
   return (
     <TouchableOpacity
       style={styles.mainView}
-      onPress={() => navigation.navigate('Topic')}>
+      onPress={() => navigation.navigate('Topic', {subjectName})}>
       <Image source={require('../assets/book.png')} style={styles.image} />
       <Text style={styles.text}>{subjectName}</Text>
     </TouchableOpacity>

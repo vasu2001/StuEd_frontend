@@ -13,7 +13,7 @@ const AccountScreen = () => {
   return (
     <View style={styles.container}>
       <ImageBackground
-        source={require('../assets/account.png')}
+        source={require('../../assets/account.png')}
         style={styles.image}>
         <Text
           style={{
@@ -36,7 +36,7 @@ const AccountScreen = () => {
         </Text>
 
         <Image
-          source={require('../assets/usermaleicon.png')}
+          source={require('../../assets/usermaleicon.png')}
           style={{
             height: 150,
             width: 150,
@@ -47,14 +47,14 @@ const AccountScreen = () => {
         <View style={{marginVertical: -30}}>
           <TouchableOpacity style={{marginLeft: 340, marginTop: 0}}>
             <Image
-              source={require('../assets/pencil.png')}
+              source={require('../../assets/pencil.png')}
               style={{height: 26, width: 26}}
             />
           </TouchableOpacity>
         </View>
         <View>
           <Image
-            source={require('../assets/mail.png')}
+            source={require('../../assets/mail.png')}
             style={{
               height: 70,
               width: 70,
@@ -90,7 +90,7 @@ const AccountScreen = () => {
         </View>
         <View>
           <Image
-            source={require('../assets/call.png')}
+            source={require('../../assets/call.png')}
             style={{
               height: 70,
               width: 70,
@@ -126,7 +126,7 @@ const AccountScreen = () => {
         </View>
         <View>
           <Image
-            source={require('../assets/school.png')}
+            source={require('../../assets/school.png')}
             style={{
               height: 70,
               width: 70,

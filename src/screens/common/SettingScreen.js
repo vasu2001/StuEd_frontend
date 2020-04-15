@@ -28,7 +28,7 @@ export default class SettingScreen extends React.Component {
     return (
       <View style={styles.container}>
         <ImageBackground
-          source={require('../assets/bg2.png')}
+          source={require('../../assets/bg2.png')}
           style={styles.image}>
           <Text style={styles.text}>Settings</Text>
 
@@ -39,7 +39,7 @@ export default class SettingScreen extends React.Component {
             }}>
             <Image
               style={styles.userimage}
-              source={require('../assets/latestusername.png')}
+              source={require('../../assets/latestusername.png')}
             />
           </TouchableOpacity>
 
@@ -77,7 +77,7 @@ export default class SettingScreen extends React.Component {
           <TouchableOpacity style={styles.button}>
             <Image
               style={styles.phonenum}
-              source={require('../assets/latestphone.png')}
+              source={require('../../assets/latestphone.png')}
             />
           </TouchableOpacity>
 
@@ -86,7 +86,10 @@ export default class SettingScreen extends React.Component {
             onPress={() => {
               Linking.openURL('https://stuedstartup.wordpress.com/faqs/');
             }}>
-            <Image style={styles.help} source={require('../assets/help.png')} />
+            <Image
+              style={styles.help}
+              source={require('../../assets/help.png')}
+            />
           </TouchableOpacity>
 
           <TouchableOpacity
@@ -98,7 +101,7 @@ export default class SettingScreen extends React.Component {
             }}>
             <Image
               style={styles.terms}
-              source={require('../assets/latestterms.png')}
+              source={require('../../assets/latestterms.png')}
             />
           </TouchableOpacity>
 
@@ -109,14 +112,14 @@ export default class SettingScreen extends React.Component {
             }}>
             <Image
               style={styles.contact}
-              source={require('../assets/latestcontact.png')}
+              source={require('../../assets/latestcontact.png')}
             />
           </TouchableOpacity>
 
           <TouchableOpacity style={styles.button}>
             <Image
               style={styles.logout}
-              source={require('../assets/logout.png')}
+              source={require('../../assets/logout.png')}
             />
           </TouchableOpacity>
         </ImageBackground>
