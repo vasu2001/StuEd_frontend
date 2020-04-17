@@ -14,5 +14,7 @@ export default (MainNavigation = () => {
     ) : (
       <StudentUIDashboard />
     )
-  ) : null;
+  ) : (
+    ''
+  );
 });

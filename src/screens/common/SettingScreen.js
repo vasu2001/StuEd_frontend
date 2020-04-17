@@ -32,18 +32,18 @@ export default class SettingScreen extends React.Component {
           source={require('../../assets/bg2.png')}
           style={styles.image}>
           <Text style={styles.text}>Settings</Text>
-
-          <TouchableOpacity
-            style={styles.button}
-            onPress={() => {
-              this.setState({show: true});
-            }}>
-            <Image
-              style={styles.userimage}
-              source={require('../../assets/latestusername.png')}
-            />
-          </TouchableOpacity>
-
+          <View style={{flex: 2}}>
+            <TouchableOpacity
+              style={styles.button}
+              onPress={() => {
+                this.setState({show: true});
+              }}>
+              <Image
+                style={styles.userimage}
+                source={require('../../assets/latestusername.png')}
+              />
+            </TouchableOpacity>
+          </View>
           <Modal transparent={true} visible={this.state.show}>
             <View style={styles.modaldesign}>
               <TextInput
@@ -74,55 +74,60 @@ export default class SettingScreen extends React.Component {
               </View>
             </View>
           </Modal>
-
-          <TouchableOpacity style={styles.button}>
-            <Image
-              style={styles.phonenum}
-              source={require('../../assets/latestphone.png')}
-            />
-          </TouchableOpacity>
-
-          <TouchableOpacity
-            style={styles.button}
-            onPress={() => {
-              Linking.openURL('https://stuedstartup.wordpress.com/faqs/');
-            }}>
-            <Image
-              style={styles.help}
-              source={require('../../assets/help.png')}
-            />
-          </TouchableOpacity>
-
-          <TouchableOpacity
-            style={styles.button}
-            onPress={() => {
-              Linking.openURL(
-                'https://stuedstartup.wordpress.com/terms-and-conditons/',
-              );
-            }}>
-            <Image
-              style={styles.terms}
-              source={require('../../assets/latestterms.png')}
-            />
-          </TouchableOpacity>
-
-          <TouchableOpacity
-            style={styles.button}
-            onPress={() => {
-              Linking.openURL('https://stuedstartup.wordpress.com/about/');
-            }}>
-            <Image
-              style={styles.contact}
-              source={require('../../assets/latestcontact.png')}
-            />
-          </TouchableOpacity>
-
-          <TouchableOpacity style={styles.button}>
-            <Image
-              style={styles.logout}
-              source={require('../../assets/logout.png')}
-            />
-          </TouchableOpacity>
+          <View style={{flex: 1}}>
+            <TouchableOpacity style={styles.button}>
+              <Image
+                style={styles.phonenum}
+                source={require('../../assets/latestphone.png')}
+              />
+            </TouchableOpacity>
+          </View>
+          <View style={{flex: 1}}>
+            <TouchableOpacity
+              style={styles.button}
+              onPress={() => {
+                Linking.openURL('https://stuedstartup.wordpress.com/faqs/');
+              }}>
+              <Image
+                style={styles.help}
+                source={require('../../assets/help.png')}
+              />
+            </TouchableOpacity>
+          </View>
+          <View style={{flex: 1}}>
+            <TouchableOpacity
+              style={styles.button}
+              onPress={() => {
+                Linking.openURL(
+                  'https://stuedstartup.wordpress.com/terms-and-conditons/',
+                );
+              }}>
+              <Image
+                style={styles.terms}
+                source={require('../../assets/latestterms.png')}
+              />
+            </TouchableOpacity>
+          </View>
+          <View style={{flex: 1}}>
+            <TouchableOpacity
+              style={styles.button}
+              onPress={() => {
+                Linking.openURL('https://stuedstartup.wordpress.com/about/');
+              }}>
+              <Image
+                style={styles.contact}
+                source={require('../../assets/latestcontact.png')}
+              />
+            </TouchableOpacity>
+          </View>
+          <View style={{flex: 1}}>
+            <TouchableOpacity style={styles.button}>
+              <Image
+                style={styles.logout}
+                source={require('../../assets/logout.png')}
+              />
+            </TouchableOpacity>
+          </View>
         </ImageBackground>
       </View>
     );
@@ -155,38 +160,38 @@ export default class SettingScreen extends React.Component {
     userimage: {
       height: 55,
       width: 500,
-      marginTop: 30,
+      marginTop: 20,
       marginHorizontal: -55,
     },
     phonenum: {
       height: 55,
       width: 500,
       marginHorizontal: -55,
-      marginVertical: -50,
+      marginVertical: -55,
     },
     help: {
       height: 55,
       width: 500,
       marginHorizontal: -55,
-      marginVertical: -40,
+      marginVertical: -45,
     },
     terms: {
       height: 55,
       width: 500,
       marginHorizontal: -55,
-      marginVertical: -30,
+      marginVertical: -35,
     },
     contact: {
       height: 55,
       width: 500,
       marginHorizontal: -55,
-      marginVertical: -20,
+      marginVertical: -30,
     },
     logout: {
       height: 55,
       width: 500,
       marginHorizontal: -55,
-      marginVertical: -25,
+      marginVertical: -30,
     },
     modaldesign: {
       backgroundColor: '#ffffff',

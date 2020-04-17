@@ -80,7 +80,7 @@ const styles = StyleSheet.create({
     flex: 0.35,
   },
   dropdownContainer: {
-    flex: 1,
+    flex: 0.7,
     justifyContent: 'space-around',
   },
   dropdown: {

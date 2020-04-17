@@ -1,4 +1,5 @@
 import * as React from 'react';
+import {Image} from 'react-native';
 import SettingScreen from '../screens/common/SettingScreen';
 import AccountScreen from '../screens/common/AccountScreen';
 import HomeScreen from '../screens/HomeScreen';
@@ -22,7 +23,10 @@ const StudentUIDashboard = () => (
         },
         tabBarColor: '#131442',
         tabBarIcon: ({color}) => (
-          <Icon name="ios-home" color="#ffffff" size={26} />
+          <Image
+            source={require('../assets/home.png')}
+            style={{width: 26, height: 26}}
+          />
         ),
       }}
     />
@@ -35,25 +39,16 @@ const StudentUIDashboard = () => (
         },
         tabBarColor: '#131442',
         tabBarIcon: ({color}) => (
-          <Icon name="ios-add-circle" color="#ffffff" size={26} />
+          // <Icon name="ios-add-circle" color="#ffffff" size={26} />
+          <Image
+            source={require('../assets/add.png')}
+            style={{width: 26, height: 26}}
+          />
         ),
       }}
     />
     <Tab.Screen
       name="Setting"
-      component={SettingScreen}
-      options={{
-        tabBarLabel: () => {
-          return null;
-        },
-        tabBarColor: '#131442',
-        tabBarIcon: ({color}) => (
-          <Icon name="ios-settings" color="#ffffff" size={26} />
-        ),
-      }}
-    />
-    <Tab.Screen
-      name="Account"
       component={AccountScreen}
       options={{
         tabBarLabel: () => {
@@ -61,7 +56,28 @@ const StudentUIDashboard = () => (
         },
         tabBarColor: '#131442',
         tabBarIcon: ({color}) => (
-          <Icon name="md-person" color="#ffffff" size={26} />
+          // <Icon name="ios-settings" color="#ffffff" size={26} />
+          <Image
+            source={require('../assets/user.png')}
+            style={{width: 26, height: 26}}
+          />
+        ),
+      }}
+    />
+    <Tab.Screen
+      name="Account"
+      component={SettingScreen}
+      options={{
+        tabBarLabel: () => {
+          return null;
+        },
+        tabBarColor: '#131442',
+        tabBarIcon: ({color}) => (
+          // <Icon name="md-person" color="#ffffff" size={26} />
+          <Image
+            source={require('../assets/settings.png')}
+            style={{width: 26, height: 26}}
+          />
         ),
       }}
     />

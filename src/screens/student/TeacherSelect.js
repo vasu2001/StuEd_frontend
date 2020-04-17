@@ -33,7 +33,9 @@ const TeacherSelect = ({navigation, route}) => {
       source={require('../../assets/bg3.png')}
       imageStyle={{resizeMode: 'stretch'}}
       style={styles.background}>
-      <Text style={styles.label}>Available Teachers</Text>
+      <View style={styles.labelContainer}>
+        <Text style={styles.label}>Available Teachers</Text>
+      </View>
       <FlatList
         data={Object.keys(teacherData).map(item => ({key: item}))}
         renderItem={({item}) => (
@@ -57,11 +59,14 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   label: {
-    flex: 0.35,
     color: 'white',
     fontSize: 35,
     textAlign: 'center',
     textAlignVertical: 'bottom',
+  },
+  labelContainer: {
+    flex: 0.35,
+    justifyContent: 'flex-end',
     paddingBottom: 20,
   },
   list: {
