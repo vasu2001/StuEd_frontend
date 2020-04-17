@@ -28,6 +28,7 @@ export default class SettingScreen extends React.Component {
     return (
       <View style={styles.container}>
         <ImageBackground
+          imageStyle={{resizeMode: 'stretch'}}
           source={require('../../assets/bg2.png')}
           style={styles.image}>
           <Text style={styles.text}>Settings</Text>

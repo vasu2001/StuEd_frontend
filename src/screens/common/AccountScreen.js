@@ -14,6 +14,7 @@ const AccountScreen = () => {
     <View style={styles.container}>
       <ImageBackground
         source={require('../../assets/account.png')}
+        imageStyle={{resizeMode: 'stretch'}}
         style={styles.image}>
         <Text
           style={{

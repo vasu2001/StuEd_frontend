@@ -5,6 +5,7 @@ const HomeScreen = () => {
   return (
     <View style={styles.container}>
       <ImageBackground
+        imageStyle={{resizeMode: 'stretch'}}
         source={require('../assets/bg2.png')}
         style={styles.image}
       />

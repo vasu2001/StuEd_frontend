@@ -1,13 +1,15 @@
 import React from 'react';
-import {Text, Image, StyleSheet} from 'react-native';
+import {Text, Image, StyleSheet, View} from 'react-native';
 import {TouchableOpacity} from 'react-native-gesture-handler';
 
-const TopicListItem = ({topicName, navigation}) => {
+const TopicListItem = ({topicName, subjectName, navigation, teacherUI}) => {
+  const route = teacherUI
+    ? ['CreateSlot', {topicName, subjectName}]
+    : ['Teacher', {topicName}];
   return (
     <TouchableOpacity
-      style={styles.mainView}
-      //   onPress={() => navigation.navigate('Topic', {subjectName})}
-    >
+      onPress={() => navigation.navigate(...route)}
+      style={styles.mainView}>
       <Image source={require('../assets/book.png')} style={styles.image} />
       <Text style={styles.text}>{topicName}</Text>
     </TouchableOpacity>

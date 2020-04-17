@@ -13,6 +13,7 @@ const SubjectSelect = ({navigation}) => {
   return (
     <View style={styles.container}>
       <ImageBackground
+        imageStyle={{resizeMode: 'stretch'}}
         source={require('../../assets/bg2.png')}
         style={styles.image}>
         <View style={styles.dropdownDiv}>
@@ -52,6 +53,7 @@ const SubjectSelect = ({navigation}) => {
             <SubjectListItem subjectName={item.key} navigation={navigation} />
           )}
           style={styles.subjectList}
+          showsVerticalScrollIndicator={false}
         />
       </ImageBackground>
     </View>
