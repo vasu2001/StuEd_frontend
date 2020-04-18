@@ -51,24 +51,6 @@ const StudentUIDashboard = () => (
     />
 
     <Tab.Screen
-      name="Setting"
-      component={AccountScreen}
-      options={{
-        tabBarLabel: () => {
-          return null;
-        },
-        tabBarColor: '#131442',
-        tabBarIcon: ({color}) => (
-          // <Icon name="ios-settings" color="#ffffff" size={26} />
-          <Image
-            source={require('../assets/user.png')}
-            style={{width: 26, height: 26}}
-          />
-        ),
-      }}
-    />
-
-    <Tab.Screen
       name="Account"
       component={SettingScreen}
       options={{
@@ -80,6 +62,24 @@ const StudentUIDashboard = () => (
           // <Icon name="md-person" color="#ffffff" size={26} />
           <Image
             source={require('../assets/settings.png')}
+            style={{width: 26, height: 26}}
+          />
+        ),
+      }}
+    />
+
+    <Tab.Screen
+      name="Setting"
+      component={AccountScreen}
+      options={{
+        tabBarLabel: () => {
+          return null;
+        },
+        tabBarColor: '#131442',
+        tabBarIcon: ({color}) => (
+          // <Icon name="ios-settings" color="#ffffff" size={26} />
+          <Image
+            source={require('../assets/user.png')}
             style={{width: 26, height: 26}}
           />
         ),

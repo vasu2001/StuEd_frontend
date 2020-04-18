@@ -1,43 +1,48 @@
-import React, {useContext} from 'react';
+import React, {useContext, useState} from 'react';
 import {View, StyleSheet, Text, Image} from 'react-native';
 import {TouchableOpacity} from 'react-native-gesture-handler';
 import StateContext from '../context/StateContext';
 
 const SlotListItem = ({slotId, data, navigation}) => {
   const {teacherUI} = useContext(StateContext).data;
+
+  const [dataState, setData] = useState(data);
+
   const imageSource = teacherUI
-    ? data.upcoming === 'upcoming'
+    ? dataState.status === 'upcoming'
       ? require('../assets/upcomingslot.png')
       : require('../assets/pastslot.png')
-    : data.OTP.length === 4
+    : dataState.OTP.length === 4
     ? require('../assets/upcomingslot.png')
     : require('../assets/pastslot.png');
   return (
     <View style={styles.mainView}>
       <TouchableOpacity
         style={styles.mainArea}
-        onPress={() => navigation.navigate('Details', {slotId, data})}>
+        onPress={() =>
+          navigation.navigate('Details', {slotId, data: dataState, setData})
+        }>
         <Image source={imageSource} style={styles.image} resizeMode="contain" />
         <View style={styles.emptyView} />
         <View style={styles.tableView}>
           <View style={styles.rowView}>
             <Text style={styles.labelText}>Date</Text>
-            <Text style={styles.dataText}>{data.slotTime}</Text>
+            <Text style={styles.dataText}>{dataState.slotTime}</Text>
           </View>
 
           <View style={styles.rowView}>
             <Text style={styles.labelText}>Time</Text>
-            <Text style={styles.dataText}>{data.slotTime}</Text>
+            <Text style={styles.dataText}>{dataState.slotTime}</Text>
           </View>
 
           <View style={styles.rowView}>
             <Text style={styles.labelText}>Subject</Text>
-            <Text style={styles.dataText}>{data.subject}</Text>
+            <Text style={styles.dataText}>{dataState.subject}</Text>
           </View>
 
           <View style={styles.rowView}>
             <Text style={styles.labelText}>Topic</Text>
-            <Text style={styles.dataText}>{data.topicName}</Text>
+            <Text style={styles.dataText}>{dataState.topicName}</Text>
           </View>
         </View>
       </TouchableOpacity>
