@@ -5,6 +5,7 @@ import SubjectSelect from '../screens/common/SubjectSelect';
 import TopicSelect from '../screens/common/TopicSelect';
 import TeacherSelect from '../screens/student/TeacherSelect';
 import SlotSelect from '../screens/student/SlotSelect';
+import AddScreen from '../screens/AddScreen';
 
 const Stack = createStackNavigator();
 
