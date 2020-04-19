@@ -16,7 +16,7 @@ const stateReducer = (state, action) => {
 export const StateProvider = ({children}) => {
   const [state, dispatch] = useReducer(stateReducer, {
     signin: true,
-    teacherUI: false,
+    teacherUI: true,
   });
 
   const toggleSignin = () => {

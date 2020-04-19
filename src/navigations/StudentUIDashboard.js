@@ -8,6 +8,8 @@ import Icon from 'react-native-vector-icons/Ionicons';
 import BrowseSlots from './BrowseSlots';
 import AddScreen from '../screens/AddScreen';
 import AddScreen2 from '../screens/AddScreen2';
+import StudentSlots from './StudentSlots';
+
 const Tab = createMaterialBottomTabNavigator();
 const StudentUIDashboard = () => (
   <Tab.Navigator
@@ -31,9 +33,12 @@ const StudentUIDashboard = () => (
         ),
       }}
     />
+
     <Tab.Screen
       name="Add"
       component={AddScreen2}
+      name="SlotList"
+      component={StudentSlots}
       options={{
         tabBarLabel: () => {
           return null;
@@ -48,23 +53,7 @@ const StudentUIDashboard = () => (
         ),
       }}
     />
-    <Tab.Screen
-      name="Setting"
-      component={AccountScreen}
-      options={{
-        tabBarLabel: () => {
-          return null;
-        },
-        tabBarColor: '#131442',
-        tabBarIcon: ({color}) => (
-          // <Icon name="ios-settings" color="#ffffff" size={26} />
-          <Image
-            source={require('../assets/user.png')}
-            style={{width: 26, height: 26}}
-          />
-        ),
-      }}
-    />
+
     <Tab.Screen
       name="Account"
       component={SettingScreen}
@@ -77,6 +66,24 @@ const StudentUIDashboard = () => (
           // <Icon name="md-person" color="#ffffff" size={26} />
           <Image
             source={require('../assets/settings.png')}
+            style={{width: 26, height: 26}}
+          />
+        ),
+      }}
+    />
+
+    <Tab.Screen
+      name="Setting"
+      component={AccountScreen}
+      options={{
+        tabBarLabel: () => {
+          return null;
+        },
+        tabBarColor: '#131442',
+        tabBarIcon: ({color}) => (
+          // <Icon name="ios-settings" color="#ffffff" size={26} />
+          <Image
+            source={require('../assets/user.png')}
             style={{width: 26, height: 26}}
           />
         ),

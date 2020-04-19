@@ -69,7 +69,7 @@ const TopicSelect = ({route, navigation}) => {
               />
             )}
             keyExtractor={item => item.key}
-            ListFooterComponent={!teacherUI ? AddTopicButton : null}
+            ListFooterComponent={teacherUI && AddTopicButton}
             showsVerticalScrollIndicator={false}
           />
         </View>

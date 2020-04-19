@@ -5,6 +5,7 @@ import AccountScreen from '../screens/common/AccountScreen';
 import HomeScreen from '../screens/HomeScreen';
 import {createMaterialBottomTabNavigator} from '@react-navigation/material-bottom-tabs';
 import Icon from 'react-native-vector-icons/Ionicons';
+import TeacherSlots from './TeacherSlots';
 
 const Tab = createMaterialBottomTabNavigator();
 const TeacherUIDashboard = () => (
@@ -15,7 +16,7 @@ const TeacherUIDashboard = () => (
     barStyle={{backgroundColor: '#694fad'}}>
     <Tab.Screen
       name="Home"
-      component={HomeScreen}
+      component={TeacherSlots}
       options={{
         tabBarLabel: () => {
           return null;
@@ -26,6 +27,7 @@ const TeacherUIDashboard = () => (
         ),
       }}
     />
+
     <Tab.Screen
       name="Add"
       component={AddScreen}
@@ -39,6 +41,7 @@ const TeacherUIDashboard = () => (
         ),
       }}
     />
+
     <Tab.Screen
       name="Setting"
       component={SettingScreen}
@@ -52,6 +55,7 @@ const TeacherUIDashboard = () => (
         ),
       }}
     />
+
     <Tab.Screen
       name="Account"
       component={AccountScreen}
