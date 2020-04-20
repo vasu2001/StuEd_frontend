@@ -56,7 +56,7 @@ const StudentUIDashboard = () => (
 
     <Tab.Screen
       name="Account"
-      component={SettingScreen}
+      component={AccountScreen}
       options={{
         tabBarLabel: () => {
           return null;
@@ -74,7 +74,7 @@ const StudentUIDashboard = () => (
 
     <Tab.Screen
       name="Setting"
-      component={AccountScreen}
+      component={SettingScreen}
       options={{
         tabBarLabel: () => {
           return null;

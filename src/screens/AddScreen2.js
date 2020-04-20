@@ -56,10 +56,10 @@ export default class AddScreen2 extends React.Component {
           style={styles.image}>
           <View
             style={{
-              flex: 1.8,
+              flex: 1.1,
               justifyContent: 'flex-end',
               flexDirection: 'column',
-              paddingTop: 45,
+              paddingTop: 40,
               paddingLeft: 40,
             }}>
             <TouchableOpacity onPress={this.showPicker}>
@@ -73,7 +73,6 @@ export default class AddScreen2 extends React.Component {
                 fontSize: 20,
                 color: 'black',
                 paddingLeft: 60,
-                paddingTop: 5,
               }}>
               {this.state.chosenDate}
             </Text>
@@ -84,10 +83,11 @@ export default class AddScreen2 extends React.Component {
               onCancel={this.hidePicker}
             />
           </View>
-          <View style={{flex: 2, paddingBottom: 80, paddingTop: 50}}>
+
+          <View style={{flex: 1.2, paddingBottom: 80, paddingTop: 50}}>
             <View
               style={{
-                flex: 0.3,
+                flex: 0.2,
                 paddingLeft: 20,
                 flexDirection: 'row',
                 paddingBottom: 20,
@@ -108,7 +108,7 @@ export default class AddScreen2 extends React.Component {
             </View>
             <View
               style={{
-                flex: 0.3,
+                flex: 0.2,
                 paddingLeft: 20,
                 flexDirection: 'row',
                 paddingBottom: 20,
@@ -127,10 +127,11 @@ export default class AddScreen2 extends React.Component {
             </View>
             <View
               style={{
-                flex: 0.7,
+                flex: 0.4,
                 paddingLeft: 20,
                 flexDirection: 'row',
                 paddingBottom: 50,
+                justifyContent: 'flex-start',
               }}>
               <View style={{flex: 1, paddingTop: 15}}>
                 <Text style={{fontSize: 20, color: 'black'}}>Venue</Text>
@@ -156,7 +157,7 @@ export default class AddScreen2 extends React.Component {
             </View>
             <View
               style={{
-                flex: 0.5,
+                flex: 0.4,
                 paddingLeft: 20,
                 flexDirection: 'row',
               }}>
@@ -172,7 +173,7 @@ export default class AddScreen2 extends React.Component {
             </View>
             <View
               style={{
-                flex: 0.01,
+                flex: 0.005,
                 paddingLeft: 100,
                 alignItems: 'flex-end',
                 paddingRight: 110,
