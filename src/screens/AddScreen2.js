@@ -55,10 +55,10 @@ export default class AddScreen2 extends React.Component {
           imageStyle={{resizeMode: 'stretch'}}
           source={require('../assets/bg2.png')}
           style={styles.image}>
+          <View style={{flex: 0.8}} />
           <View
             style={{
-              flex: 1.1,
-              justifyContent: 'flex-end',
+              flex: 0.7,
               flexDirection: 'column',
               paddingTop: 40,
               paddingLeft: 40,
@@ -85,7 +85,7 @@ export default class AddScreen2 extends React.Component {
             />
           </View>
 
-          <View style={{flex: 1.2, paddingBottom: 80, paddingTop: 50}}>
+          <View style={{flex: 2}}>
             <View
               style={{
                 flex: 0.2,
@@ -131,7 +131,7 @@ export default class AddScreen2 extends React.Component {
                 flex: 0.4,
                 paddingLeft: 20,
                 flexDirection: 'row',
-                paddingBottom: 50,
+                paddingBottom: 25,
                 justifyContent: 'flex-start',
               }}>
               <View style={{flex: 1, paddingTop: 15}}>
@@ -156,9 +156,10 @@ export default class AddScreen2 extends React.Component {
                 </View>
               </View>
             </View>
+
             <View
               style={{
-                flex: 0.4,
+                flex: 0.5,
                 paddingLeft: 20,
                 flexDirection: 'row',
               }}>
@@ -172,13 +173,13 @@ export default class AddScreen2 extends React.Component {
                 selectedButtonColor={'#131442'}
               />
             </View>
+            {/* addslotbutton */}
             <View
               style={{
-                flex: 0.005,
-                paddingLeft: 100,
+                flex: 0.03,
                 alignItems: 'flex-end',
                 paddingRight: 110,
-                paddingTop: 40,
+                paddingBottom: 50,
               }}>
               <TouchableOpacity>
                 <Image

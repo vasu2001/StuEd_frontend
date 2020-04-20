@@ -175,6 +175,17 @@ const AccountScreen = () => {
               </Text>
             </View>
           </View>
+          <View style={{alignItems: 'flex-end', paddingRight: 20}}>
+            <TouchableOpacity>
+              <Image
+                source={require('../../assets/switch.png')}
+                style={{
+                  height: 60,
+                  width: 170,
+                }}
+              />
+            </TouchableOpacity>
+          </View>
         </View>
       </ImageBackground>
     </View>
