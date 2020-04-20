@@ -78,6 +78,8 @@ target 'StuEd_frontend' do
   pod 'Folly', :podspec => '../node_modules/react-native/third-party-podspecs/Folly.podspec'
 
 
+  pod 'RNDateTimePicker', :path => '../node_modules/@react-native-community/datetimepicker'
+
   target 'StuEd_frontendTests' do
     inherit! :complete
     # Pods for testing
