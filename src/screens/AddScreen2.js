@@ -6,9 +6,10 @@ import {
   ImageBackground,
   Image,
   Button,
+  TouchableOpacity,
 } from 'react-native';
 import {TextInput} from 'react-native-paper';
-import {TouchableOpacity} from 'react-native-gesture-handler';
+// import {TouchableOpacity} from 'react-native-gesture-handler';
 import RadioForm, {
   RadioButton,
   RadioButtonInput,
