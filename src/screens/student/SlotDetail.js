@@ -1,8 +1,8 @@
 import React, {useState} from 'react';
 import {View, Text, StyleSheet, ImageBackground} from 'react-native';
-import {FlatList, ScrollView} from 'react-native-gesture-handler';
+import {ScrollView} from 'react-native-gesture-handler';
 import SlotDetailListItem from '../../components/SlotDetailListItem';
-import {Rating, AirbnbRating} from 'react-native-elements';
+import {Rating} from 'react-native-elements';
 
 const SlotDetail = ({route, navigation}) => {
   const {slotId, data} = route.params;

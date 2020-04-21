@@ -1,8 +1,8 @@
 import React from 'react';
-import {View, StyleSheet, Image, Text} from 'react-native';
+import {View, StyleSheet, Text} from 'react-native';
 import {TouchableOpacity} from 'react-native-gesture-handler';
 
-const Button = ({navigation, labelText, callback}) => {
+const Button = ({labelText, callback}) => {
   return (
     <View style={styles.mainView}>
       <TouchableOpacity style={styles.touchArea} onPress={callback}>

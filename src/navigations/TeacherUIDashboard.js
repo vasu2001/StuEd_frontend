@@ -1,12 +1,10 @@
 import * as React from 'react';
-import AddScreen2 from '../screens/AddScreen2';
 import SettingScreen from '../screens/common/SettingScreen';
 import AccountScreen from '../screens/common/AccountScreen';
-import HomeScreen from '../screens/HomeScreen';
 import {createMaterialBottomTabNavigator} from '@react-navigation/material-bottom-tabs';
-import Icon from 'react-native-vector-icons/Ionicons';
 import TeacherSlots from './TeacherSlots';
 import {Image} from 'react-native';
+import CreateSlot from './CreateSlot';
 
 const Tab = createMaterialBottomTabNavigator();
 const TeacherUIDashboard = () => (
@@ -19,9 +17,6 @@ const TeacherUIDashboard = () => (
       name="Home"
       component={TeacherSlots}
       options={{
-        tabBarLabel: () => {
-          return null;
-        },
         tabBarColor: '#131442',
         tabBarIcon: ({color}) => (
           <Image
@@ -34,11 +29,8 @@ const TeacherUIDashboard = () => (
 
     <Tab.Screen
       name="Add"
-      component={AddScreen2}
+      component={CreateSlot}
       options={{
-        tabBarLabel: () => {
-          return null;
-        },
         tabBarColor: '#131442',
         tabBarIcon: ({color}) => (
           <Image
@@ -50,12 +42,9 @@ const TeacherUIDashboard = () => (
     />
 
     <Tab.Screen
-      name="Setting"
+      name="Settings"
       component={SettingScreen}
       options={{
-        tabBarLabel: () => {
-          return null;
-        },
         tabBarColor: '#131442',
         tabBarIcon: ({color}) => (
           <Image
@@ -70,9 +59,6 @@ const TeacherUIDashboard = () => (
       name="Account"
       component={AccountScreen}
       options={{
-        tabBarLabel: () => {
-          return null;
-        },
         tabBarColor: '#131442',
         tabBarIcon: ({color}) => (
           <Image

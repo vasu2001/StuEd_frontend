@@ -1,25 +1,40 @@
-import * as React from 'react';
+import React, {useState} from 'react';
 import {View, Text, StyleSheet, ImageBackground, Image} from 'react-native';
 import {TextInput} from 'react-native-paper';
 import {TouchableOpacity} from 'react-native-gesture-handler';
+import Snackbar from 'react-native-snackbar';
 
-const AddScreen = ({navigation}) => {
-  const [topic, settopic] = React.useState('');
-  // constructor() {
-  //   super();
-  //   this.state = {
-  //     show: false,
-  //   };
-  // }
+const AddScreen = ({navigation, route}) => {
+  const {topicName, subjectName} = route.params;
+  const [topicDesc, setTopicDesc] = useState('');
+  const [estMarks, setExtMarks] = useState('');
+  const [estTime, setEstTime] = useState('');
+
+  const next = () => {
+    if (topicDesc === '' || estMarks === '' || estTime === '')
+      Snackbar.show({
+        text: 'Provide all details',
+        duration: Snackbar.LENGTH_SHORT,
+        backgroundColor: '#7785AC',
+      });
+    else
+      navigation.navigate('CreateSlot2', {
+        topicDesc,
+        estMarks,
+        estTime,
+        topicName,
+        subject: subjectName,
+      });
+  };
 
   return (
     <View style={styles.container}>
       <ImageBackground
         imageStyle={{resizeMode: 'stretch'}}
-        source={require('../assets/bg2.png')}
+        source={require('../../assets/bg2.png')}
         style={styles.image}>
         <View style={{flex: 0.6, justifyContent: 'flex-end', paddingLeft: 40}}>
-          <Text style={{color: 'white', fontSize: 30}}>TOPIC</Text>
+          <Text style={{color: 'white', fontSize: 30}}>{topicName}</Text>
         </View>
         <View style={{flex: 2}}>
           <View style={{flex: 1, paddingTop: 80}}>
@@ -30,6 +45,8 @@ const AddScreen = ({navigation}) => {
               style={{height: 50, width: '100%'}}
               placeholderTextColor="#000000"
               keyboardType={'default'}
+              value={topicDesc}
+              onChangeText={text => setTopicDesc(text)}
             />
           </View>
           <View style={{flex: 4}}>
@@ -45,6 +62,8 @@ const AddScreen = ({navigation}) => {
                   style={{height: 50}}
                   placeholderTextColor="#000000"
                   keyboardType={'number-pad'}
+                  value={estMarks}
+                  onChangeText={text => setExtMarks(text)}
                 />
               </View>
             </View>
@@ -60,6 +79,8 @@ const AddScreen = ({navigation}) => {
                   style={{height: 50}}
                   placeholderTextColor="#000000"
                   keyboardType={'default'}
+                  value={estTime}
+                  onChangeText={text => setEstTime(text)}
                 />
               </View>
             </View>
@@ -70,10 +91,10 @@ const AddScreen = ({navigation}) => {
                 paddingBottom: 80,
                 paddingRight: 20,
               }}>
-              <TouchableOpacity>
+              <TouchableOpacity onPress={next}>
                 <Image
                   style={{height: 73, width: 170}}
-                  source={require('../assets/next.png')}
+                  source={require('../../assets/next.png')}
                 />
               </TouchableOpacity>
             </View>

@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React, {useContext} from 'react';
 import {
   View,
   Text,
@@ -7,9 +7,11 @@ import {
   Image,
   TouchableOpacity,
 } from 'react-native';
-//import {  } from "react-native-gesture-handler";
+import StateContext from '../../context/StateContext';
 
 const AccountScreen = () => {
+  const {data, toggleTeacherUI} = useContext(StateContext);
+
   return (
     <View style={styles.container}>
       <ImageBackground
@@ -176,7 +178,7 @@ const AccountScreen = () => {
             </View>
           </View>
           <View style={{alignItems: 'flex-end', paddingRight: 20}}>
-            <TouchableOpacity>
+            <TouchableOpacity onPress={toggleTeacherUI}>
               <Image
                 source={require('../../assets/switch.png')}
                 style={{

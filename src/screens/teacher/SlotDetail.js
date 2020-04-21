@@ -1,8 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import {View, Text, StyleSheet, ImageBackground} from 'react-native';
-import {FlatList, ScrollView} from 'react-native-gesture-handler';
+import {ScrollView} from 'react-native-gesture-handler';
 import SlotDetailListItem from '../../components/SlotDetailListItem';
-import {Rating, AirbnbRating} from 'react-native-elements';
 import Button from '../../components/Button';
 
 const startSlot = (data, setData, setDataRoot) => () => {

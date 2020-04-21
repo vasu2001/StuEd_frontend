@@ -2,12 +2,8 @@ import * as React from 'react';
 import {Image} from 'react-native';
 import SettingScreen from '../screens/common/SettingScreen';
 import AccountScreen from '../screens/common/AccountScreen';
-import HomeScreen from '../screens/HomeScreen';
 import {createMaterialBottomTabNavigator} from '@react-navigation/material-bottom-tabs';
-import Icon from 'react-native-vector-icons/Ionicons';
 import BrowseSlots from './BrowseSlots';
-import AddScreen from '../screens/AddScreen';
-import AddScreen2 from '../screens/AddScreen2';
 import StudentSlots from './StudentSlots';
 
 const Tab = createMaterialBottomTabNavigator();
@@ -21,9 +17,6 @@ const StudentUIDashboard = () => (
       name="Home"
       component={BrowseSlots}
       options={{
-        tabBarLabel: () => {
-          return null;
-        },
         tabBarColor: '#131442',
         tabBarIcon: ({color}) => (
           <Image
@@ -35,14 +28,9 @@ const StudentUIDashboard = () => (
     />
 
     <Tab.Screen
-      name="Add"
-      component={AddScreen2}
-      name="SlotList"
+      name="Booked Slots"
       component={StudentSlots}
       options={{
-        tabBarLabel: () => {
-          return null;
-        },
         tabBarColor: '#131442',
         tabBarIcon: ({color}) => (
           // <Icon name="ios-add-circle" color="#ffffff" size={26} />
@@ -55,15 +43,12 @@ const StudentUIDashboard = () => (
     />
 
     <Tab.Screen
-      name="Account"
-      component={AccountScreen}
+      name="Settings"
+      component={SettingScreen}
       options={{
-        tabBarLabel: () => {
-          return null;
-        },
         tabBarColor: '#131442',
         tabBarIcon: ({color}) => (
-          // <Icon name="md-person" color="#ffffff" size={26} />
+          // <Icon name="ios-settings" color="#ffffff" size={26} />
           <Image
             source={require('../assets/settings.png')}
             style={{width: 26, height: 26}}
@@ -73,15 +58,12 @@ const StudentUIDashboard = () => (
     />
 
     <Tab.Screen
-      name="Setting"
-      component={SettingScreen}
+      name="Account"
+      component={AccountScreen}
       options={{
-        tabBarLabel: () => {
-          return null;
-        },
         tabBarColor: '#131442',
         tabBarIcon: ({color}) => (
-          // <Icon name="ios-settings" color="#ffffff" size={26} />
+          // <Icon name="md-person" color="#ffffff" size={26} />
           <Image
             source={require('../assets/user.png')}
             style={{width: 26, height: 26}}
