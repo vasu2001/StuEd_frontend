@@ -11,9 +11,6 @@ import {
   Button,
   TextInput,
 } from 'react-native';
-//import { color } from "react-native-reanimated";
-//import { startAsync } from "expo/build/AR";
-//import { Dialog } from "react-native-dialog";
 
 export default class SettingScreen extends React.Component {
   constructor() {

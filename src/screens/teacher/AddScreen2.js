@@ -12,11 +12,12 @@ import RadioForm from 'react-native-simple-radio-button';
 import DateTimePicker from 'react-native-modal-datetime-picker';
 import moment from 'moment';
 import {ScrollView} from 'react-native-gesture-handler';
+import Snackbar from 'react-native-snackbar';
 
 var gender = [
-  {label: 'Boys', value: 0},
-  {label: 'Girls', value: 1},
-  {label: 'Both', value: 2},
+  {label: 'Boys', value: 'male'},
+  {label: 'Girls', value: 'female'},
+  {label: 'Both', value: 'both'},
 ];
 
 export default class AddScreen2 extends React.Component {
@@ -29,9 +30,39 @@ export default class AddScreen2 extends React.Component {
       fees: '',
       venue1: '',
       venue2: '',
-      genderPreference: 0,
+      genderPreference: 'male',
     };
   }
+
+  submit = () => {
+    if (
+      this.state.chosenDate === '' ||
+      this.state.maxStudents === '' ||
+      this.state.venue1 === '' ||
+      this.state.fees === ''
+    ) {
+      Snackbar.show({
+        text: 'Provide all details',
+        duration: Snackbar.LENGTH_SHORT,
+        backgroundColor: '#7785AC',
+      });
+      return;
+    }
+
+    const data = {
+      ...this.props.route.params,
+      slotTime: this.state.chosenDate,
+      maxStudents: this.state.maxStudents,
+      venue1: this.state.venue1,
+      venue2: this.state.venue2,
+      fees: this.state.fees,
+      genderPreference: this.state.genderPreference,
+    };
+
+    //api call to create slot
+    console.log(data);
+  };
+
   handlePicker = datetime => {
     this.setState({
       isVisible: false,
@@ -54,7 +85,7 @@ export default class AddScreen2 extends React.Component {
       <View style={styles.container}>
         <ImageBackground
           imageStyle={{resizeMode: 'stretch'}}
-          source={require('../assets/bg2.png')}
+          source={require('../../assets/bg2.png')}
           style={styles.image}>
           <View style={styles.header}>
             <Text style={styles.headerText}>Add more details</Text>
@@ -62,7 +93,7 @@ export default class AddScreen2 extends React.Component {
           <ScrollView style={styles.mainView}>
             <View style={styles.dateTimeView}>
               <TouchableOpacity onPress={this.showPicker}>
-                <Image source={require('../assets/calendar-1.png')} />
+                <Image source={require('../../assets/calendar-1.png')} />
               </TouchableOpacity>
               <Text style={styles.timeText}>{this.state.chosenDate}</Text>
               <DateTimePicker
@@ -143,11 +174,11 @@ export default class AddScreen2 extends React.Component {
             </View>
 
             <View style={styles.buttonView}>
-              <TouchableOpacity>
+              <TouchableOpacity onPress={this.submit}>
                 <Image
                   style={styles.buttonImage}
                   resizeMode="contain"
-                  source={require('../assets/addslot.png')}
+                  source={require('../../assets/addslot.png')}
                 />
               </TouchableOpacity>
             </View>
