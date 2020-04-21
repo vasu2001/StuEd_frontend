@@ -15,7 +15,7 @@ export default class signup2 extends React.Component {
       <View style={styles.container}>
         <ImageBackground
           imageStyle={{resizeMode: 'stretch'}}
-          source={require('../assets/background.jpg')}
+          source={require('../../assets/background.jpg')}
           style={styles.image}>
           <View style={{flex: 0.5}} />
           <View style={styles.pick}>
@@ -32,7 +32,7 @@ export default class signup2 extends React.Component {
                 <TouchableOpacity>
                   <Image
                     style={styles.next}
-                    source={require('../assets/send.png')}
+                    source={require('../../assets/send.png')}
                   />
                 </TouchableOpacity>
               </View>
@@ -41,7 +41,7 @@ export default class signup2 extends React.Component {
                 <TouchableOpacity>
                   <Image
                     style={styles.next}
-                    source={require('../assets/resend.png')}
+                    source={require('../../assets/resend.png')}
                   />
                 </TouchableOpacity>
               </View>
@@ -58,7 +58,7 @@ export default class signup2 extends React.Component {
               <TouchableOpacity>
                 <Image
                   style={styles.next}
-                  source={require('../assets/verify.png')}
+                  source={require('../../assets/verify.png')}
                 />
               </TouchableOpacity>
             </View>

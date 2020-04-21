@@ -24,12 +24,6 @@ export default class signup1 extends React.Component {
   constructor(props) {
     super(props);
 
-    this.inputRefs = {
-      firstTextInput: null,
-      collegen: null,
-      lastTextInput: null,
-    };
-
     this.state = {
       collegen: undefined,
       collegena: undefined,
@@ -47,7 +41,7 @@ export default class signup1 extends React.Component {
       <View style={styles.container}>
         <ImageBackground
           imageStyle={{resizeMode: 'stretch'}}
-          source={require('../assets/background.jpg')}
+          source={require('../../assets/background.jpg')}
           style={styles.image}>
           <View style={{flex: 0.5}} />
           <View style={styles.pick}>
@@ -59,17 +53,8 @@ export default class signup1 extends React.Component {
                   collegen: value,
                 });
               }}
-              //   onUpArrow={() => {
-              //     this.inputRefs.firstTextInput.focus();
-              //   }}
-              //   onDownArrow={() => {
-              //     this.inputRefs.collegena.togglePicker();
-              //   }}
               style={pickerSelectStyles}
               value={this.state.collegen}
-              ref={el => {
-                this.inputRefs.collegen = el;
-              }}
             />
             <View style={{paddingTop: 40}}>
               <TextInput
@@ -108,7 +93,7 @@ export default class signup1 extends React.Component {
               <TouchableOpacity>
                 <Image
                   style={styles.next}
-                  source={require('../assets/next_button.png')}
+                  source={require('../../assets/next_button.png')}
                 />
               </TouchableOpacity>
             </View>
