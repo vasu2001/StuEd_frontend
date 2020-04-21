@@ -5,18 +5,14 @@ import {
   StyleSheet,
   ImageBackground,
   Image,
-  Button,
   TouchableOpacity,
 } from 'react-native';
 import {TextInput} from 'react-native-paper';
-// import {TouchableOpacity} from 'react-native-gesture-handler';
-import RadioForm, {
-  RadioButton,
-  RadioButtonInput,
-  RadioButtonLabel,
-} from 'react-native-simple-radio-button';
+import RadioForm from 'react-native-simple-radio-button';
 import DateTimePicker from 'react-native-modal-datetime-picker';
 import moment from 'moment';
+import {ScrollView} from 'react-native-gesture-handler';
+
 var gender = [
   {label: 'Boys', value: 0},
   {label: 'Girls', value: 1},
@@ -29,6 +25,11 @@ export default class AddScreen2 extends React.Component {
     this.state = {
       isVisible: false,
       chosenDate: '',
+      maxStudents: '',
+      fees: '',
+      venue1: '',
+      venue2: '',
+      genderPreference: 0,
     };
   }
   handlePicker = datetime => {
@@ -55,140 +56,102 @@ export default class AddScreen2 extends React.Component {
           imageStyle={{resizeMode: 'stretch'}}
           source={require('../assets/bg2.png')}
           style={styles.image}>
-          <View style={{flex: 0.8}} />
-          <View
-            style={{
-              flex: 0.7,
-              flexDirection: 'column',
-              paddingTop: 40,
-              paddingLeft: 40,
-            }}>
-            <TouchableOpacity onPress={this.showPicker}>
-              <Image
-                style={{height: 100, width: 300}}
-                source={require('../assets/calendar-1.png')}
-              />
-            </TouchableOpacity>
-            <Text
-              style={{
-                fontSize: 20,
-                color: 'black',
-                paddingLeft: 60,
-              }}>
-              {this.state.chosenDate}
-            </Text>
-            <DateTimePicker
-              isVisible={this.state.isVisible}
-              mode={'datetime'}
-              onConfirm={this.handlePicker}
-              onCancel={this.hidePicker}
-            />
+          <View style={styles.header}>
+            <Text style={styles.headerText}>Add more details</Text>
           </View>
+          <ScrollView style={styles.mainView}>
+            <View style={styles.dateTimeView}>
+              <TouchableOpacity onPress={this.showPicker}>
+                <Image source={require('../assets/calendar-1.png')} />
+              </TouchableOpacity>
+              <Text style={styles.timeText}>{this.state.chosenDate}</Text>
+              <DateTimePicker
+                isVisible={this.state.isVisible}
+                mode={'datetime'}
+                onConfirm={this.handlePicker}
+                onCancel={this.hidePicker}
+              />
+            </View>
 
-          <View style={{flex: 2}}>
-            <View
-              style={{
-                flex: 0.2,
-                paddingLeft: 20,
-                flexDirection: 'row',
-                paddingBottom: 20,
-              }}>
-              <View style={{flex: 1, paddingTop: 15}}>
-                <Text style={{fontSize: 20, color: 'black'}}>
-                  Maximum Students
-                </Text>
+            <View style={styles.rowView}>
+              <View style={styles.labelView}>
+                <Text style={styles.labelText}>Maximum Students</Text>
               </View>
-              <View style={{flex: 1}}>
+              <View style={styles.inputView}>
                 <TextInput
                   placeholder="Quantity"
-                  style={{height: 45, width: 100}}
+                  style={styles.input}
                   placeholderTextColor="#000000"
                   keyboardType={'number-pad'}
+                  value={this.state.maxStudents}
+                  onChangeText={text => this.setState({maxStudents: text})}
                 />
-              </View>
-            </View>
-            <View
-              style={{
-                flex: 0.2,
-                paddingLeft: 20,
-                flexDirection: 'row',
-                paddingBottom: 20,
-              }}>
-              <View style={{flex: 1, paddingTop: 15}}>
-                <Text style={{fontSize: 20, color: 'black'}}>Fees</Text>
-              </View>
-              <View style={{flex: 1}}>
-                <TextInput
-                  placeholder="Fees"
-                  style={{height: 45, width: 100}}
-                  placeholderTextColor="#000000"
-                  keyboardType={'number-pad'}
-                />
-              </View>
-            </View>
-            <View
-              style={{
-                flex: 0.4,
-                paddingLeft: 20,
-                flexDirection: 'row',
-                paddingBottom: 25,
-                justifyContent: 'flex-start',
-              }}>
-              <View style={{flex: 1, paddingTop: 15}}>
-                <Text style={{fontSize: 20, color: 'black'}}>Venue</Text>
-              </View>
-              <View style={{paddingRight: 50}}>
-                <View style={{flex: 1}}>
-                  <TextInput
-                    placeholder="Room No"
-                    style={{height: 45, width: 100}}
-                    placeholderTextColor="#000000"
-                    keyboardType={'number-pad'}
-                  />
-                </View>
-                <View style={{flex: 1, paddingTop: 40, paddingBottom: 10}}>
-                  <TextInput
-                    placeholder="Hostel Name"
-                    style={{height: 45, width: 150}}
-                    placeholderTextColor="#000000"
-                    keyboardType={'default'}
-                  />
-                </View>
               </View>
             </View>
 
-            <View
-              style={{
-                flex: 0.5,
-                paddingLeft: 20,
-                flexDirection: 'row',
-              }}>
-              <Text style={{fontSize: 20, color: 'black', paddingRight: 20}}>
-                Interested in Teaching
-              </Text>
-              <RadioForm
-                radio_props={gender}
-                onPress={value => {}}
-                buttonSize={15}
-                selectedButtonColor={'#131442'}
-              />
+            <View style={styles.rowView}>
+              <View style={styles.labelView}>
+                <Text style={styles.labelText}>Fees</Text>
+              </View>
+              <View style={styles.inputView}>
+                <TextInput
+                  placeholder="Fees.."
+                  style={styles.input}
+                  placeholderTextColor="#000000"
+                  keyboardType={'number-pad'}
+                  value={this.state.fees}
+                  onChangeText={text => this.setState({fees: text})}
+                />
+              </View>
             </View>
-            {/* addslotbutton */}
-            <View
-              style={{
-                flex: 0.03,
-                alignItems: 'flex-end',
-                paddingRight: 110,
-                paddingBottom: 50,
-              }}>
+
+            <View style={styles.rowView}>
+              <View style={styles.labelView}>
+                <Text style={styles.labelText}>Venue</Text>
+              </View>
+              <View style={styles.inputView}>
+                <TextInput
+                  placeholder="Room No."
+                  style={styles.input}
+                  placeholderTextColor="#000000"
+                  value={this.state.venue1}
+                  onChangeText={text => this.setState({venue1: text})}
+                />
+                <TextInput
+                  placeholder="Hostel Name"
+                  style={styles.input}
+                  placeholderTextColor="#000000"
+                  value={this.state.venue2}
+                  onChangeText={text => this.setState({venue2: text})}
+                />
+              </View>
+            </View>
+
+            <View style={styles.rowView}>
+              <View style={styles.labelView}>
+                <Text style={styles.labelText}>Gender Preference</Text>
+              </View>
+              <View style={styles.inputView}>
+                <RadioForm
+                  radio_props={gender}
+                  onPress={value => this.setState({genderPreference: value})}
+                  buttonSize={15}
+                  selectedButtonColor={'#131442'}
+                  value={this.state.genderPreference}
+                />
+              </View>
+            </View>
+
+            <View style={styles.buttonView}>
               <TouchableOpacity>
                 <Image
-                  style={{height: 52, width: 180}}
+                  style={styles.buttonImage}
+                  resizeMode="contain"
                   source={require('../assets/addslot.png')}
                 />
               </TouchableOpacity>
             </View>
-          </View>
+          </ScrollView>
         </ImageBackground>
       </View>
     );
@@ -205,5 +168,56 @@ const styles = StyleSheet.create({
     flex: 1,
     alignSelf: 'stretch',
     width: null,
+  },
+  header: {
+    flex: 0.35,
+    justifyContent: 'flex-end',
+    paddingBottom: 0,
+  },
+  headerText: {
+    fontSize: 35,
+    textAlign: 'center',
+    textAlignVertical: 'bottom',
+    color: 'white',
+    paddingBottom: 5,
+  },
+  mainView: {
+    flex: 1,
+    paddingHorizontal: 10,
+  },
+  dateTimeView: {
+    alignItems: 'center',
+    paddingBottom: 10,
+    paddingTop: 20,
+  },
+  timeText: {
+    fontSize: 20,
+    marginTop: 5,
+  },
+  rowView: {
+    flexDirection: 'row',
+    paddingVertical: 5,
+  },
+  labelView: {
+    flex: 1,
+    justifyContent: 'center',
+  },
+  inputView: {
+    flex: 1,
+  },
+  labelText: {
+    fontSize: 20,
+  },
+  input: {
+    height: 50,
+  },
+  buttonView: {
+    flexDirection: 'row',
+    justifyContent: 'center',
+    padding: 20,
+  },
+  buttonImage: {
+    paddingHorizontal: 50,
+    height: 50,
   },
 });
