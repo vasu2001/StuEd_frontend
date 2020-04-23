@@ -48,6 +48,7 @@ export default class signup1 extends React.Component {
             <RNPickerSelect
               placeholder={placeholder}
               items={college}
+              useNativeAndroidPickerStyle={false}
               onValueChange={value => {
                 this.setState({
                   collegen: value,
@@ -174,11 +175,11 @@ const pickerSelectStyles = StyleSheet.create({
     color: 'white',
     paddingRight: 30, // to ensure the text is never behind the icon
   },
-  //   inputAndroid: {
-  //     fontSize: 16,
-  //     paddingHorizontal: 10,
-  //     paddingVertical: 8,
-  //     color: 'black',
-  //     paddingRight: 30, // to ensure the text is never behind the icon
-  //   },
+  inputAndroid: {
+    fontSize: 30,
+    paddingHorizontal: 10,
+    paddingVertical: 8,
+    color: 'white',
+    paddingRight: 30, // to ensure the text is never behind the icon
+  },
 });

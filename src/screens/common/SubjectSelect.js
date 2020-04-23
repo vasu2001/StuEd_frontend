@@ -1,14 +1,25 @@
 import React, {useState} from 'react';
-import {View, Text, StyleSheet, Picker, ImageBackground} from 'react-native';
+import {View, Text, StyleSheet, ImageBackground} from 'react-native';
 import {FlatList} from 'react-native-gesture-handler';
 import SubjectListItem from '../../components/SubjectListItem';
+import RNPickerSelect from 'react-native-picker-select';
 
 const SubjectSelect = ({navigation}) => {
-  const [branch, setBranch] = useState('CSE');
-  const [semester, setSemester] = useState('1');
-  const branches = ['CSE', 'ECE'];
+  const [branch, setBranch] = useState('');
+  const [semester, setSemester] = useState('');
   const totalSem = 8;
   const subjectList = ['maths', 'english'];
+  const semesterPlaceholder = {
+    label: 'Semester',
+    value: null,
+    color: '#9EA0A4',
+  };
+  const branchPlaceholder = {
+    label: 'Branch',
+    value: null,
+    color: '#9EA0A4',
+  };
+  const branches = [{value: 'CSE', label: 'CSE'}, {value: 'ECE', label: 'ECE'}];
 
   return (
     <View style={styles.container}>
@@ -20,30 +31,28 @@ const SubjectSelect = ({navigation}) => {
           {/* branch selector dropdown */}
           <View style={styles.dropdownContainer}>
             <Text style={styles.labelText}>Branch</Text>
-            <Picker
-              selectedValue={branch}
-              onValueChange={(itemValue, itemIndex) => setBranch(itemValue)}
-              style={styles.dropdown}>
-              {branches.map(item => (
-                <Picker.Item label={item} value={item} key={item} />
-              ))}
-            </Picker>
+            <RNPickerSelect
+              placeholder={branchPlaceholder}
+              items={branches}
+              useNativeAndroidPickerStyle={false}
+              onValueChange={value => setBranch(value)}
+              style={dropdownStyle}
+              value={branch}
+            />
           </View>
           {/* semester selector dropdown */}
           <View style={styles.dropdownContainer}>
             <Text style={styles.labelText}>Semester</Text>
-            <Picker
-              selectedValue={semester}
-              onValueChange={(itemValue, itemIndex) => setSemester(itemValue)}
-              style={styles.dropdown}>
-              {Array.from({length: totalSem}, (x, i) => i + 1).map(item => (
-                <Picker.Item
-                  label={item.toString()}
-                  value={item.toString()}
-                  key={item.toString()}
-                />
-              ))}
-            </Picker>
+            <RNPickerSelect
+              placeholder={semesterPlaceholder}
+              items={Array.from({length: totalSem}, (x, i) =>
+                (i + 1).toString(),
+              ).map(item => ({label: item, value: item}))}
+              useNativeAndroidPickerStyle={false}
+              onValueChange={value => setSemester(value)}
+              style={dropdownStyle}
+              value={semester}
+            />
           </View>
         </View>
         {/* subject list */}
@@ -101,5 +110,22 @@ const styles = StyleSheet.create({
     color: 'white',
     textAlign: 'center',
     fontSize: 20,
+  },
+});
+
+const dropdownStyle = StyleSheet.create({
+  inputAndroid: {
+    backgroundColor: 'white',
+    margin: 35,
+    marginTop: 2,
+    marginBottom: 20,
+    color: '#000000',
+  },
+  inputIOS: {
+    backgroundColor: 'white',
+    margin: 35,
+    marginTop: 2,
+    marginBottom: 20,
+    color: '#000000',
   },
 });
