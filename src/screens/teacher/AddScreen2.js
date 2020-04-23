@@ -7,12 +7,12 @@ import {
   Image,
   TouchableOpacity,
 } from 'react-native';
-import {TextInput} from 'react-native-paper';
+import {TextInput, Snackbar} from 'react-native-paper';
 import RadioForm from 'react-native-simple-radio-button';
 import DateTimePicker from 'react-native-modal-datetime-picker';
 import moment from 'moment';
 import {ScrollView} from 'react-native-gesture-handler';
-import Snackbar from 'react-native-snackbar';
+// import Snackbar from 'react-native-snackbar';
 
 var gender = [
   {label: 'Boys', value: 'male'},
@@ -41,11 +41,17 @@ export default class AddScreen2 extends React.Component {
       this.state.venue1 === '' ||
       this.state.fees === ''
     ) {
-      Snackbar.show({
-        text: 'Provide all details',
-        duration: Snackbar.LENGTH_SHORT,
-        backgroundColor: '#7785AC',
-      });
+      <Snackbar
+        visible={visible}
+        onDismiss={this._onDismissSnackBar}
+        action={{
+          label: 'Undo',
+          onPress: () => {
+            // Do something
+          },
+        }}>
+        Hey there! I'm a Snackbar.
+      </Snackbar>;
       return;
     }
 
@@ -79,6 +85,12 @@ export default class AddScreen2 extends React.Component {
       isVisible: false,
     });
   };
+  state = {
+    visible: false,
+  };
+  _onToggleSnackBar = () => this.setState(state => ({visible: !state.visible}));
+
+  _onDismissSnackBar = () => this.setState({visible: false});
 
   render() {
     return (

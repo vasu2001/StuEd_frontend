@@ -43,7 +43,7 @@ export default class signup1 extends React.Component {
           imageStyle={{resizeMode: 'stretch'}}
           source={require('../../assets/background.jpg')}
           style={styles.image}>
-          <View style={{flex: 0.5}} />
+          <View style={{flex: 0.4}} />
           <View style={styles.pick}>
             <RNPickerSelect
               placeholder={placeholder}
@@ -164,6 +164,7 @@ const styles = StyleSheet.create({
   },
   pick: {
     flex: 1,
+    justifyContent: 'space-around',
   },
 });
 const pickerSelectStyles = StyleSheet.create({

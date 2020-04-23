@@ -11,7 +11,7 @@ const SlotDetail = ({route, navigation}) => {
   const [rating, setRating] = useState(data.OTP);
   console.log(rating);
 
-  const submitRating = userRating => {
+  const submitRating = (userRating) => {
     //api call to submit review
     setRating(userRating.toString());
     console.log(rating);

@@ -5,6 +5,7 @@ import AccountScreen from '../screens/common/AccountScreen';
 import {createMaterialBottomTabNavigator} from '@react-navigation/material-bottom-tabs';
 import BrowseSlots from './BrowseSlots';
 import StudentSlots from './StudentSlots';
+import signup3 from '../screens/signup/signup3';
 
 const Tab = createMaterialBottomTabNavigator();
 const StudentUIDashboard = () => (

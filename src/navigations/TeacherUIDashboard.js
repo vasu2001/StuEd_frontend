@@ -5,7 +5,9 @@ import {createMaterialBottomTabNavigator} from '@react-navigation/material-botto
 import TeacherSlots from './TeacherSlots';
 import {Image} from 'react-native';
 import CreateSlot from './CreateSlot';
-
+import signup1 from '../screens/signup/signup1';
+import signup2 from '../screens/signup/signup2';
+import signup3 from '../screens/signup/signup3';
 const Tab = createMaterialBottomTabNavigator();
 const TeacherUIDashboard = () => (
   <Tab.Navigator

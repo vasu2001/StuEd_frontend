@@ -80,6 +80,8 @@ target 'StuEd_frontend' do
 
   pod 'RNDateTimePicker', :path => '../node_modules/@react-native-community/datetimepicker'
 
+  pod 'RNSnackbar', :path => '../node_modules/react-native-snackbar'
+
   target 'StuEd_frontendTests' do
     inherit! :complete
     # Pods for testing

@@ -1,22 +1,34 @@
 import React, {useState} from 'react';
 import {View, Text, StyleSheet, ImageBackground, Image} from 'react-native';
-import {TextInput} from 'react-native-paper';
+import {TextInput, Snackbar} from 'react-native-paper';
 import {TouchableOpacity} from 'react-native-gesture-handler';
-import Snackbar from 'react-native-snackbar';
+// import Snackbar from 'react-native-snackbar';
 
 const AddScreen = ({navigation, route}) => {
   const {topicName, subjectName} = route.params;
   const [topicDesc, setTopicDesc] = useState('');
-  const [estMarks, setExtMarks] = useState('');
+  const [estMarks, setExtMarksr] = useState('');
   const [estTime, setEstTime] = useState('');
+  state = {
+    visible: false,
+  };
+  _onToggleSnackBar = () => this.setState(state => ({visible: !state.visible}));
+
+  _onDismissSnackBar = () => this.setState({visible: false});
 
   const next = () => {
     if (topicDesc === '' || estMarks === '' || estTime === '')
-      Snackbar.show({
-        text: 'Provide all details',
-        duration: Snackbar.LENGTH_SHORT,
-        backgroundColor: '#7785AC',
-      });
+      <Snackbar
+        visible={visible}
+        onDismiss={this._onDismissSnackBar}
+        action={{
+          label: 'Undo',
+          onPress: () => {
+            // Do something
+          },
+        }}>
+        Hey there! I'm a Snackbar.
+      </Snackbar>;
     else
       navigation.navigate('CreateSlot2', {
         topicDesc,
