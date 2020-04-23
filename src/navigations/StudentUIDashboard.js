@@ -36,7 +36,7 @@ const StudentUIDashboard = () => (
         tabBarIcon: ({color}) => (
           // <Icon name="ios-add-circle" color="#ffffff" size={26} />
           <Image
-            source={require('../assets/add.png')}
+            source={require('../assets/bookedslots.png')}
             style={{width: 26, height: 26}}
           />
         ),

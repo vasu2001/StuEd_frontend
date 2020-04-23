@@ -12,6 +12,10 @@ import StateContext from '../../context/StateContext';
 const AccountScreen = () => {
   const {data, toggleTeacherUI} = useContext(StateContext);
 
+  var switchButton = data.teacherUI
+    ? require('../../assets/switchteacher.png')
+    : require('../../assets/switchstudent.png');
+
   return (
     <View style={styles.container}>
       <ImageBackground
@@ -180,10 +184,10 @@ const AccountScreen = () => {
           <View style={{alignItems: 'flex-end', paddingRight: 20}}>
             <TouchableOpacity onPress={toggleTeacherUI}>
               <Image
-                source={require('../../assets/switch.png')}
+                source={switchButton}
                 style={{
                   height: 60,
-                  width: 170,
+                  width: 200,
                 }}
               />
             </TouchableOpacity>
