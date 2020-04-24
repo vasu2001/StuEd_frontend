@@ -17,9 +17,9 @@ export default class signup3 extends React.Component {
           imageStyle={{resizeMode: 'stretch'}}
           source={require('../../assets/background.jpg')}
           style={styles.image}>
-          <View style={{flex: 0.3}} />
+          <View style={{flex: 0.4}} />
           <View style={styles.pick}>
-            <View style={{paddingTop: 15}}>
+            <View>
               <TextInput
                 placeholder="Enter Your Phone Number"
                 style={styles.phone}

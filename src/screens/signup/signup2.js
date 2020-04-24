@@ -19,7 +19,7 @@ export default class signup2 extends React.Component {
           style={styles.image}>
           <View style={{flex: 0.4}} />
           <View style={styles.pick}>
-            <View style={{paddingTop: 15}}>
+            <View>
               <TextInput
                 placeholder="+91"
                 style={styles.phone}
@@ -27,8 +27,8 @@ export default class signup2 extends React.Component {
                 keyboardType={'number-pad'}
               />
             </View>
-            <View style={{flexDirection: 'row', paddingTop: 30}}>
-              <View style={{paddingTop: 40, paddingLeft: 13}}>
+            <View style={{flexDirection: 'row'}}>
+              <View style={{paddingTop: 30, paddingLeft: 25}}>
                 <TouchableOpacity>
                   <Image
                     style={styles.next}
@@ -37,7 +37,7 @@ export default class signup2 extends React.Component {
                 </TouchableOpacity>
               </View>
 
-              <View style={{paddingTop: 40, paddingLeft: 90}}>
+              <View style={{paddingTop: 30, paddingLeft: 70}}>
                 <TouchableOpacity>
                   <Image
                     style={styles.next}
@@ -46,7 +46,7 @@ export default class signup2 extends React.Component {
                 </TouchableOpacity>
               </View>
             </View>
-            <View style={{paddingTop: 70}}>
+            <View>
               <TextInput
                 placeholder="Enter OTP"
                 style={styles.password}
@@ -54,7 +54,7 @@ export default class signup2 extends React.Component {
                 keyboardType={'number-pad'}
               />
             </View>
-            <View style={{alignItems: 'center', paddingTop: 80}}>
+            <View style={{alignItems: 'center'}}>
               <TouchableOpacity>
                 <Image
                   style={styles.next}
@@ -80,29 +80,7 @@ const styles = StyleSheet.create({
     alignSelf: 'stretch',
     width: null,
   },
-  uptext: {
-    flex: 1,
-    justifyContent: 'flex-end',
-    paddingBottom: 30,
-  },
-  main: {
-    fontSize: 50,
-    color: '#FFFFFF',
-    paddingLeft: 55,
-  },
-  second: {
-    flex: 1.2,
-    paddingTop: 50,
-    flexDirection: 'column',
-    justifyContent: 'flex-end',
-  },
-  second2: {
-    flex: 0.4,
-    paddingTop: 50,
-    flexDirection: 'row',
-    paddingTop: 30,
-    paddingLeft: 70,
-  },
+
   phone: {
     height: 40,
     width: '100%',
@@ -117,11 +95,7 @@ const styles = StyleSheet.create({
     paddingLeft: 40,
     color: 'white',
   },
-  forget: {
-    paddingTop: 30,
-    alignItems: 'flex-end',
-    paddingRight: 10,
-  },
+
   next: {
     width: 150,
     height: 50,

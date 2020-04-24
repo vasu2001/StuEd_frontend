@@ -43,6 +43,7 @@ export default class signup1 extends React.Component {
           imageStyle={{resizeMode: 'stretch'}}
           source={require('../../assets/background.jpg')}
           style={styles.image}>
+          {/* <View style={{flex = 0.4}}/> */}
           <View style={{flex: 0.4}} />
           <View style={styles.pick}>
             <RNPickerSelect
@@ -57,7 +58,7 @@ export default class signup1 extends React.Component {
               style={pickerSelectStyles}
               value={this.state.collegen}
             />
-            <View style={{paddingTop: 40}}>
+            <View style={{paddingTop: 30}}>
               <TextInput
                 placeholder="Full Name"
                 style={styles.phone}
@@ -65,7 +66,7 @@ export default class signup1 extends React.Component {
                 keyboardType={'default'}
               />
             </View>
-            <View style={{paddingTop: 40}}>
+            <View style={{paddingTop: 30}}>
               <TextInput
                 placeholder="Phone Number"
                 style={styles.phone}
@@ -73,7 +74,7 @@ export default class signup1 extends React.Component {
                 keyboardType={'default'}
               />
             </View>
-            <View style={{paddingTop: 40}}>
+            <View style={{paddingTop: 30}}>
               <TextInput
                 placeholder="Password"
                 style={styles.password}
@@ -81,7 +82,7 @@ export default class signup1 extends React.Component {
                 keyboardType={'default'}
               />
             </View>
-            <View style={{paddingTop: 40}}>
+            <View style={{paddingTop: 30}}>
               <TextInput
                 placeholder="Retype Password"
                 style={styles.password}
@@ -90,7 +91,7 @@ export default class signup1 extends React.Component {
               />
             </View>
 
-            <View style={{alignItems: 'center', paddingTop: 80}}>
+            <View style={{alignItems: 'center', paddingTop: 50}}>
               <TouchableOpacity>
                 <Image
                   style={styles.next}
@@ -116,56 +117,28 @@ const styles = StyleSheet.create({
     alignSelf: 'stretch',
     width: null,
   },
-  uptext: {
-    flex: 1,
-    justifyContent: 'flex-end',
-    paddingBottom: 30,
-  },
-  main: {
-    fontSize: 50,
-    color: '#FFFFFF',
-    paddingLeft: 55,
-  },
-  second: {
-    flex: 1.2,
-    paddingTop: 50,
-    flexDirection: 'column',
-    justifyContent: 'flex-end',
-  },
-  second2: {
-    flex: 0.4,
-    paddingTop: 50,
-    flexDirection: 'row',
-    paddingTop: 30,
-    paddingLeft: 70,
-  },
+
   phone: {
-    height: 40,
+    height: 60,
     width: '100%',
     fontSize: 30,
     paddingLeft: 40,
     color: 'white',
   },
   password: {
-    height: 40,
-    width: 300,
+    height: 60,
+    width: '100%',
     fontSize: 30,
     paddingLeft: 40,
     color: 'white',
   },
-  forget: {
-    paddingTop: 30,
-    alignItems: 'flex-end',
-    paddingRight: 10,
-  },
+
   next: {
     width: 130,
     height: 50,
-    paddingTop: 20,
   },
   pick: {
     flex: 1,
-    justifyContent: 'space-around',
   },
 });
 const pickerSelectStyles = StyleSheet.create({
