@@ -41,11 +41,11 @@ export default class AddScreen2 extends React.Component {
       this.state.venue1 === '' ||
       this.state.fees === ''
     ) {
-      Snackbar.show({
-        text: 'Provide all details',
-        duration: Snackbar.LENGTH_SHORT,
-        backgroundColor: '#7785AC',
-      });
+      // Snackbar.show({
+      //   text: 'Provide all details',
+      //   duration: Snackbar.LENGTH_SHORT,
+      //   backgroundColor: '#7785AC',
+      // });
       return;
     }
 
