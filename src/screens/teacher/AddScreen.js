@@ -10,22 +10,22 @@ const AddScreen = ({navigation, route}) => {
   const [estMarks, setExtMarks] = useState('');
   const [estTime, setEstTime] = useState('');
 
-  // const next = () => {
-  //   if (topicDesc === '' || estMarks === '' || estTime === '')
-  //     // Snackbar.show({
-  //     //   text: 'Provide all details',
-  //     //   duration: Snackbar.LENGTH_SHORT,
-  //     //   backgroundColor: '#7785AC',
-  //     // });
-  //   else
-  //     navigation.navigate('CreateSlot2', {
-  //       topicDesc,
-  //       estMarks,
-  //       estTime,
-  //       topicName,
-  //       subject: subjectName,
-  //     });
-  // };
+  const next = () => {
+    if (topicDesc === '' || estMarks === '' || estTime === '');
+    else
+      // Snackbar.show({
+      //   text: 'Provide all details',
+      //   duration: Snackbar.LENGTH_SHORT,
+      //   backgroundColor: '#7785AC',
+      // });
+      navigation.navigate('CreateSlot2', {
+        topicDesc,
+        estMarks,
+        estTime,
+        topicName,
+        subject: subjectName,
+      });
+  };
 
   return (
     <View style={styles.container}>
