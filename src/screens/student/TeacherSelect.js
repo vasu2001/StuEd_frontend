@@ -9,14 +9,14 @@ const TeacherSelect = ({navigation, route}) => {
       slotIds: [
         {
           slotId: 'asafdgfusgasfi',
-          slotTime: '12:00:33',
+          slotTime: '2020-04-24T20:36:11.952Z',
           started: false,
           currentStudents: 5,
           maxStudents: 10,
         },
         {
           slotId: 'sfasgfsdgsdgdfdas',
-          slotTime: '12:00:45',
+          slotTime: '2020-04-24T20:36:11.952Z',
           started: true,
           currentStudents: 5,
           maxStudents: 10,

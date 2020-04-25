@@ -20,7 +20,11 @@ const SlotSelect = ({route, navigation}) => {
           <Text style={styles.headerText}>Select a Slot</Text>
         </View>
         <ScrollView style={styles.expandableListContainer}>
-          <SlotExpandableView teacherId={teacherId} slotIds={slotIds} />
+          <SlotExpandableView
+            teacherId={teacherId}
+            slotIds={slotIds}
+            topicName={topicName}
+          />
         </ScrollView>
       </ImageBackground>
     </View>

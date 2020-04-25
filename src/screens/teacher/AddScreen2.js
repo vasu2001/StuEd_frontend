@@ -6,6 +6,7 @@ import {
   ImageBackground,
   Image,
   TouchableOpacity,
+  Alert,
 } from 'react-native';
 import {TextInput} from 'react-native-paper';
 import RadioForm from 'react-native-simple-radio-button';
@@ -13,6 +14,7 @@ import DateTimePicker from 'react-native-modal-datetime-picker';
 import moment from 'moment';
 import {ScrollView} from 'react-native-gesture-handler';
 import Snackbar from 'react-native-snackbar';
+import NotificationService from '../../services/notificationService';
 
 var gender = [
   {label: 'Boys', value: 'male'},
@@ -21,17 +23,23 @@ var gender = [
 ];
 
 export default class AddScreen2 extends React.Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       isVisible: false,
-      chosenDate: '',
+      chosenDate: moment(),
       maxStudents: '',
       fees: '',
       venue1: '',
       venue2: '',
       genderPreference: 'male',
     };
+    this.notification = new NotificationService();
+  }
+
+  //Permissions to use notifications
+  handlePerm(perms) {
+    Alert.alert('Permissions', JSON.stringify(perms));
   }
 
   submit = () => {
@@ -61,12 +69,15 @@ export default class AddScreen2 extends React.Component {
 
     //api call to create slot
     console.log(data);
+    //onSuccess
+    this.notification.scheduleNotification(data.slotTime, data.topicName);
   };
 
   handlePicker = datetime => {
     this.setState({
       isVisible: false,
-      chosenDate: moment(datetime).format('MMMM, Do YYYY HH:mm'),
+      //chosenDate: moment(datetime).format('MMMM, Do YYYY HH:mm'),
+      chosenDate: datetime,
     });
   };
   showPicker = () => {
@@ -95,7 +106,9 @@ export default class AddScreen2 extends React.Component {
               <TouchableOpacity onPress={this.showPicker}>
                 <Image source={require('../../assets/calendar-1.png')} />
               </TouchableOpacity>
-              <Text style={styles.timeText}>{this.state.chosenDate}</Text>
+              <Text style={styles.timeText}>
+                {moment(this.state.chosenDate).format('MMMM, Do YYYY HH:mm A')}
+              </Text>
               <DateTimePicker
                 isVisible={this.state.isVisible}
                 mode={'datetime'}

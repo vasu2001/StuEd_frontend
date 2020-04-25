@@ -1,14 +1,41 @@
 import React, {Component} from 'react';
-import {View, StyleSheet, Text, Image} from 'react-native';
+import {View, StyleSheet, Text, Image, Alert} from 'react-native';
 import Accordion from 'react-native-collapsible/Accordion';
 import {TouchableOpacity} from 'react-native-gesture-handler';
+import NotificationService from '../services/notificationService';
+import moment from 'moment';
 
 var fetchedData = [];
+//slotIds=[{slotId,slotTime,started,currentStudents,maxStudents},..]
 
 class SlotsExpandableView extends Component {
+  constructor(props) {
+    super(props);
+
+    this.notification = new NotificationService();
+  }
+
   state = {
     activeSections: [0],
     slotsFetched: [],
+  };
+
+  //Permissions to use notifications
+  handlePerm(perms) {
+    Alert.alert('Permissions', JSON.stringify(perms));
+  }
+
+  buy = (section, data) => () => {
+    //payment api triggering
+    //....
+    //onSuccesfull payment & booking res={status,OTP}
+    console.log(section.slotTime);
+    const OTP = '3456';
+    this.notification.localNotification(this.props.topicName, OTP);
+    this.notification.scheduleNotification(
+      section.slotTime,
+      this.props.topicName,
+    );
   };
 
   teacherId = this.props.teacherId;
@@ -25,7 +52,9 @@ class SlotsExpandableView extends Component {
 
     return (
       <View style={finalStyle}>
-        <Text style={styles.headerText}>{section.slotTime}</Text>
+        <Text style={styles.headerText}>
+          {moment(section.slotTime).format('DD/MM/YY , HH:mm A')}
+        </Text>
         {/* replace the below line with icon saying ongoing */}
         {section.started && (
           <View style={{alignItems: 'center'}}>
@@ -57,7 +86,7 @@ class SlotsExpandableView extends Component {
         estMarks: 15,
         estTime: '1 hour',
       };
-      var temp = this.state.slotsFetched;
+      var temp = [...this.state.slotsFetched];
       temp[index] = 1;
       this.setState({slotsFetched: temp});
 
@@ -141,7 +170,9 @@ class SlotsExpandableView extends Component {
           </View>
 
           <View style={styles.buyContainer}>
-            <TouchableOpacity style={styles.buyButton}>
+            <TouchableOpacity
+              style={styles.buyButton}
+              onPress={this.buy(section, data)}>
               <Image
                 source={require('../assets/buyicon.png')}
                 style={styles.buyIcon}
