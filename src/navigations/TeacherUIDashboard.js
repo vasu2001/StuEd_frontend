@@ -45,7 +45,7 @@ const TeacherUIDashboard = () => (
 
     <Tab.Screen
       name="Settings"
-      component={SettingScreen}
+      component={signup3}
       options={{
         tabBarColor: '#131442',
         tabBarIcon: ({color}) => (

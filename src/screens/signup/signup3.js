@@ -17,7 +17,6 @@ export default class signup3 extends React.Component {
           imageStyle={{resizeMode: 'stretch'}}
           source={require('../../assets/background.jpg')}
           style={styles.image}>
-          <View style={{flex: 0.4}} />
           <View style={styles.pick}>
             <View>
               <TextInput
@@ -28,7 +27,7 @@ export default class signup3 extends React.Component {
               />
             </View>
 
-            <View style={{alignItems: 'center', paddingTop: 80}}>
+            <View style={{alignItems: 'center', paddingTop: 30}}>
               <TouchableOpacity>
                 <Image
                   style={styles.next}
@@ -71,5 +70,6 @@ const styles = StyleSheet.create({
   pick: {
     flex: 1,
     justifyContent: 'space-around',
+    paddingTop: 200,
   },
 });

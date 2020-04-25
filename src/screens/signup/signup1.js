@@ -43,8 +43,6 @@ export default class signup1 extends React.Component {
           imageStyle={{resizeMode: 'stretch'}}
           source={require('../../assets/background.jpg')}
           style={styles.image}>
-          {/* <View style={{flex = 0.4}}/> */}
-          <View style={{flex: 0.4}} />
           <View style={styles.pick}>
             <RNPickerSelect
               placeholder={placeholder}
@@ -91,7 +89,7 @@ export default class signup1 extends React.Component {
               />
             </View>
 
-            <View style={{alignItems: 'center', paddingTop: 50}}>
+            <View style={{alignItems: 'center', paddingTop: 30}}>
               <TouchableOpacity>
                 <Image
                   style={styles.next}
@@ -139,6 +137,7 @@ const styles = StyleSheet.create({
   },
   pick: {
     flex: 1,
+    paddingTop: 250,
   },
 });
 const pickerSelectStyles = StyleSheet.create({

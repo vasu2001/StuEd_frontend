@@ -17,7 +17,6 @@ export default class signup2 extends React.Component {
           imageStyle={{resizeMode: 'stretch'}}
           source={require('../../assets/background.jpg')}
           style={styles.image}>
-          <View style={{flex: 0.4}} />
           <View style={styles.pick}>
             <View>
               <TextInput
@@ -104,6 +103,7 @@ const styles = StyleSheet.create({
   pick: {
     flex: 1,
     justifyContent: 'space-around',
+    paddingTop: 250,
   },
 });
 
