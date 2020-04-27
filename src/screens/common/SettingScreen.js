@@ -11,6 +11,7 @@ import {
   Button,
   TextInput,
 } from 'react-native';
+import StateContext from '../../context/StateContext';
 
 export default class SettingScreen extends React.Component {
   constructor() {
@@ -19,6 +20,12 @@ export default class SettingScreen extends React.Component {
       show: false,
     };
   }
+
+  static contextType = StateContext;
+
+  signout = () => {
+    this.context.toggleSignin();
+  };
 
   render() {
     styles = this.styles;
@@ -131,7 +138,7 @@ export default class SettingScreen extends React.Component {
               </TouchableOpacity>
             </View>
             <View style={{flex: 1}}>
-              <TouchableOpacity style={styles.button}>
+              <TouchableOpacity style={styles.button} onPress={this.signout}>
                 <Image
                   style={styles.logout}
                   source={require('../../assets/logout.png')}

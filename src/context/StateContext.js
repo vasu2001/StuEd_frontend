@@ -15,7 +15,7 @@ const stateReducer = (state, action) => {
 
 export const StateProvider = ({children}) => {
   const [state, dispatch] = useReducer(stateReducer, {
-    signin: true,
+    signin: false,
     teacherUI: false,
   });
 

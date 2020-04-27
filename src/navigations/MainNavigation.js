@@ -3,6 +3,7 @@ import {NavigationContainer, StackActions} from '@react-navigation/native';
 import StudentUIDashboard from './StudentUIDashboard';
 import TeacherUIDashboard from './TeacherUIDashboard';
 import StateContext from '../context/StateContext';
+import LoginSignup from './loginSignup';
 
 export default (MainNavigation = () => {
   const {data} = useContext(StateContext);
@@ -15,6 +16,6 @@ export default (MainNavigation = () => {
       <StudentUIDashboard />
     )
   ) : (
-    ''
+    <LoginSignup />
   );
 });

@@ -1,4 +1,4 @@
-import React, {Component, useState} from 'react';
+import React, {Component} from 'react';
 import {
   View,
   Text,
@@ -9,7 +9,10 @@ import {
   TouchableOpacity,
 } from 'react-native';
 import RNPickerSelect from 'react-native-picker-select';
-const college = [
+import StateContext from '../../context/StateContext';
+import Snackbar from 'react-native-snackbar';
+
+const colleges = [
   {
     label: 'Jaypee',
     value: 'Jaypee',
@@ -20,21 +23,48 @@ const college = [
   },
 ];
 
-export default class MainPage extends React.Component {
+export default class Login extends Component {
   constructor(props) {
     super(props);
 
-    this.inputRefs = {
-      firstTextInput: null,
-      collegen: null,
-      lastTextInput: null,
-    };
-
     this.state = {
-      collegen: undefined,
-      collegena: undefined,
+      collegeName: 'Jaypee',
+      phoneNo: '0000000000',
+      password: '12345',
     };
   }
+
+  static contextType = StateContext;
+
+  login = () => {
+    if (this.state.collegeName === undefined) {
+      Snackbar.show({
+        text: 'Select a college',
+        duration: Snackbar.LENGTH_SHORT,
+        backgroundColor: '#50C9CE',
+      });
+    } else if (this.state.phoneNo.length !== 10) {
+      Snackbar.show({
+        text: 'Enter a valid Phone No',
+        duration: Snackbar.LENGTH_SHORT,
+        backgroundColor: '#50C9CE',
+      });
+    } else if (this.state.password === '') {
+      Snackbar.show({
+        text: 'Enter password',
+        duration: Snackbar.LENGTH_SHORT,
+        backgroundColor: '#50C9CE',
+      });
+    } else this.context.toggleSignin();
+  };
+
+  signup = () => {
+    this.props.navigation.navigate('Signup');
+  };
+
+  forgetPassword = () => {
+    this.props.navigation.navigate('Forget Password');
+  };
 
   render() {
     const placeholder = {
@@ -47,7 +77,7 @@ export default class MainPage extends React.Component {
       <View style={styles.container}>
         <ImageBackground
           imageStyle={{resizeMode: 'stretch'}}
-          source={require('../assets/background.jpg')}
+          source={require('../../assets/background.jpg')}
           style={styles.image}>
           <View style={styles.uptext}>
             <Text style={styles.main}>StuEd - Study</Text>
@@ -56,52 +86,53 @@ export default class MainPage extends React.Component {
           <View style={styles.second}>
             <RNPickerSelect
               placeholder={placeholder}
-              items={college}
+              items={colleges}
               onValueChange={value => {
                 this.setState({
-                  collegen: value,
+                  collegeName: value,
                 });
               }}
-              //   onUpArrow={() => {
-              //     this.inputRefs.firstTextInput.focus();
-              //   }}
-              //   onDownArrow={() => {
-              //     this.inputRefs.collegena.togglePicker();
-              //   }}
               style={pickerSelectStyles}
-              value={this.state.collegen}
-              ref={el => {
-                this.inputRefs.collegen = el;
-              }}
+              value={this.state.collegeName}
             />
             <View style={{paddingTop: 60}}>
               <TextInput
                 placeholder="Phone Number"
                 style={styles.phone}
-                placeholderTextColor="#FFFFFF"
-                keyboardType={'default'}
+                placeholderTextColor="grey"
+                keyboardType={'number-pad'}
+                autoCorrect={false}
+                enablesReturnKeyAutomatically
+                value={this.state.phoneNo}
+                onChangeText={text => this.setState({phoneNo: text})}
               />
             </View>
             <View style={{paddingTop: 30}}>
               <TextInput
                 placeholder="Password"
                 style={styles.password}
-                placeholderTextColor="#FFFFFF"
+                placeholderTextColor="grey"
                 keyboardType={'default'}
+                autoCorrect={false}
+                autoCapitalize={false}
+                enablesReturnKeyAutomatically
+                secureTextEntry
+                value={this.state.password}
+                onChangeText={text => this.setState({password: text})}
               />
             </View>
             <View style={styles.forget}>
-              <TouchableOpacity>
+              <TouchableOpacity onPress={this.forgetPassword}>
                 <Text style={{fontSize: 20, color: 'white'}}>
                   Forget Password?
                 </Text>
               </TouchableOpacity>
             </View>
             <View style={{alignItems: 'center', paddingTop: 30}}>
-              <TouchableOpacity>
+              <TouchableOpacity onPress={this.login}>
                 <Image
                   style={styles.login}
-                  source={require('../assets/login_button.png')}
+                  source={require('../../assets/login_button.png')}
                 />
               </TouchableOpacity>
             </View>
@@ -110,7 +141,7 @@ export default class MainPage extends React.Component {
             <Text style={{color: 'white', fontSize: 20}}>
               Dont have an Account?
             </Text>
-            <TouchableOpacity>
+            <TouchableOpacity onPress={this.signup}>
               <Text style={{fontSize: 20, color: 'white'}}>Sign up!</Text>
             </TouchableOpacity>
           </View>
@@ -186,11 +217,11 @@ const pickerSelectStyles = StyleSheet.create({
     color: 'white',
     paddingRight: 30, // to ensure the text is never behind the icon
   },
-  //   inputAndroid: {
-  //     fontSize: 16,
-  //     paddingHorizontal: 10,
-  //     paddingVertical: 8,
-  //     color: 'black',
-  //     paddingRight: 30, // to ensure the text is never behind the icon
-  //   },
+  inputAndroid: {
+    fontSize: 16,
+    paddingHorizontal: 10,
+    paddingVertical: 8,
+    color: 'black',
+    paddingRight: 30, // to ensure the text is never behind the icon
+  },
 });
