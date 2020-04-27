@@ -4,7 +4,9 @@ import {View, Text, StyleSheet, Image} from 'react-native';
 const SlotDetailListItem = ({dataText, labelText}) => {
   return labelText === 'Gender Preference' ? (
     <View style={styles.mainView}>
-      <Text style={styles.labelText}>{labelText}</Text>
+      <View style={styles.labelContainer}>
+        <Text style={styles.labelText}>{labelText}</Text>
+      </View>
       <View style={styles.imageContainer}>
         {dataText == 'male' ? (
           <Image
@@ -36,7 +38,9 @@ const SlotDetailListItem = ({dataText, labelText}) => {
     </View>
   ) : (
     <View style={styles.mainView}>
-      <Text style={styles.labelText}>{labelText}</Text>
+      <View style={styles.labelContainer}>
+        <Text style={styles.labelText}>{labelText}</Text>
+      </View>
       <Text style={styles.dataText}>{dataText}</Text>
     </View>
   );
@@ -54,6 +58,11 @@ const styles = StyleSheet.create({
     borderWidth: 1,
   },
   labelText: {
+    textAlign: 'center',
+    color: 'white',
+    textAlignVertical: 'center',
+  },
+  labelContainer: {
     backgroundColor: '#7785AC',
     borderColor: 'grey',
     flex: 0.5,
@@ -63,9 +72,8 @@ const styles = StyleSheet.create({
     padding: 10,
     borderRightWidth: 1,
     borderLeftWidth: 1,
-    textAlign: 'center',
-    color: 'white',
-    textAlignVertical: 'center',
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   dataText: {
     borderTopRightRadius: 20,

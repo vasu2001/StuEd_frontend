@@ -82,6 +82,12 @@ target 'StuEd_frontend' do
 
   pod 'RNSnackbar', :path => '../node_modules/react-native-snackbar'
 
+  pod 'RNCPushNotificationIOS', :path => '../node_modules/@react-native-community/push-notification-ios'
+  
+  pod 'CocoaAsyncSocket', :modular_headers => true
+#  pod 'Bagel', :configurations => ['Debug']
+  
+  
   target 'StuEd_frontendTests' do
     inherit! :complete
     # Pods for testing

@@ -29,11 +29,14 @@ class SlotsExpandableView extends Component {
     //payment api triggering
     //....
     //onSuccesfull payment & booking res={status,OTP}
-    console.log(section.slotTime);
+    //console.log(section.slotTime);
     const OTP = '3456';
     this.notification.localNotification(this.props.topicName, OTP);
     this.notification.scheduleNotification(
       section.slotTime,
+      // moment()
+      //   .add(1, 'hours')
+      //   .add(30, 'seconds'),
       this.props.topicName,
     );
   };

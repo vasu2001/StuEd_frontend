@@ -1,5 +1,5 @@
 import React, {useContext, useState} from 'react';
-import {View, Text, StyleSheet, ImageBackground} from 'react-native';
+import {View, Text, StyleSheet, ImageBackground, Image} from 'react-native';
 import StateContext from '../../context/StateContext';
 import {SearchBar} from 'react-native-elements';
 import {FlatList} from 'react-native-gesture-handler';
@@ -49,6 +49,18 @@ const TopicSelect = ({route, navigation}) => {
             onChangeText={updateSearch}
             value={search}
             inputContainerStyle={{opacity: 1}}
+            searchIcon={
+              <Image
+                source={require('../../assets/search.png')}
+                style={{width: 20, height: 20}}
+              />
+            }
+            clearIcon={
+              <Image
+                source={require('../../assets/cancel.png')}
+                style={{width: 20, height: 20, marginRight: 5}}
+              />
+            }
             lightTheme
             round
           />

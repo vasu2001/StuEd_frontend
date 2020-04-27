@@ -9,12 +9,12 @@ const SlotDetail = ({route, navigation}) => {
   //data=> otp,paymnetid,teacherid,subject,topicname,slottime
 
   const [rating, setRating] = useState(data.OTP);
-  console.log(rating);
+  //console.log('rendered');
 
-  const submitRating = (userRating) => {
+  const submitRating = userRating => {
     //api call to submit review
     setRating(userRating.toString());
-    console.log(rating);
+    //console.log('submitting ' + rating);
   };
 
   //api call to fetch data

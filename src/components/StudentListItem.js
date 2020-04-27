@@ -62,6 +62,8 @@ const styles = StyleSheet.create({
   },
   input: {
     backgroundColor: '#EBE9E9',
+    padding: 10,
+    fontSize: 20,
   },
   otpColumn: {
     justifyContent: 'center',

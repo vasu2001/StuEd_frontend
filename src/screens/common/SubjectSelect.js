@@ -92,12 +92,12 @@ const styles = StyleSheet.create({
     flex: 0.7,
     justifyContent: 'space-around',
   },
-  dropdown: {
-    backgroundColor: 'white',
-    margin: 35,
-    marginTop: 2,
-    marginBottom: 20,
-  },
+  // dropdown: {
+  //   backgroundColor: 'white',
+  //   margin: 35,
+  //   marginTop: 2,
+  //   marginBottom: 20,
+  // },
   subjectList: {
     flex: 0.65,
     marginTop: 20,
@@ -127,5 +127,6 @@ const dropdownStyle = StyleSheet.create({
     marginTop: 2,
     marginBottom: 20,
     color: '#000000',
+    paddingVertical: 10,
   },
 });

@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import {View, Text, StyleSheet, ImageBackground, Image} from 'react-native';
 import {TextInput} from 'react-native-paper';
 import {TouchableOpacity} from 'react-native-gesture-handler';
-// import Snackbar from 'react-native-snackbar';
+import Snackbar from 'react-native-snackbar';
 
 const AddScreen = ({navigation, route}) => {
   const {topicName, subjectName} = route.params;
@@ -11,13 +11,13 @@ const AddScreen = ({navigation, route}) => {
   const [estTime, setEstTime] = useState('');
 
   const next = () => {
-    if (topicDesc === '' || estMarks === '' || estTime === '');
+    if (topicDesc === '' || estMarks === '' || estTime === '')
+      Snackbar.show({
+        text: 'Provide all details',
+        duration: Snackbar.LENGTH_SHORT,
+        backgroundColor: '#7785AC',
+      });
     else
-      // Snackbar.show({
-      //   text: 'Provide all details',
-      //   duration: Snackbar.LENGTH_SHORT,
-      //   backgroundColor: '#7785AC',
-      // });
       navigation.navigate('CreateSlot2', {
         topicDesc,
         estMarks,
