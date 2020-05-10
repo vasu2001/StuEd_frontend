@@ -7,11 +7,11 @@ import {
   Image,
   TouchableOpacity,
   Linking,
-  Modal,
   Button,
   TextInput,
 } from 'react-native';
 import StateContext from '../../context/StateContext';
+import DialogContainer from '../../containers/DialogContainer';
 
 export default class SettingScreen extends React.Component {
   constructor() {
@@ -61,36 +61,32 @@ export default class SettingScreen extends React.Component {
                 />
               </TouchableOpacity>
             </View>
-            <Modal transparent={true} visible={this.state.show}>
-              <View style={styles.modaldesign}>
-                <TextInput
-                  placeholder="Enter new Username"
-                  style={styles.modalfield}
-                  placeholderTextColor="#7A898B"
-                  keyboardType={'default'}
-                  underlineColorAndroid={'black'}
+            <DialogContainer
+              visible={this.state.show}
+              cancel={() => this.setState({show: false})}>
+              <TextInput
+                placeholder="Enter new Username"
+                style={styles.modalfield}
+                placeholderTextColor="#7A898B"
+                keyboardType={'default'}
+                underlineColorAndroid={'black'}
+              />
+              <View
+                style={{
+                  flexDirection: 'row',
+                  justifyContent: 'space-around',
+                }}>
+                <Button
+                  title="Close"
+                  onPress={() => {
+                    this.setState({
+                      show: false,
+                    });
+                  }}
                 />
-                <View
-                  style={{
-                    flexDirection: 'row',
-                    marginVertical: -10,
-                  }}>
-                  <View style={{marginLeft: 70}}>
-                    <Button
-                      title="Close"
-                      onPress={() => {
-                        this.setState({
-                          show: false,
-                        });
-                      }}
-                    />
-                  </View>
-                  <View style={{marginLeft: 90}}>
-                    <Button title="Save" />
-                  </View>
-                </View>
+                <Button title="Save" />
               </View>
-            </Modal>
+            </DialogContainer>
             <View style={{flex: 1}}>
               <TouchableOpacity style={styles.button}>
                 <Image
@@ -195,20 +191,8 @@ export default class SettingScreen extends React.Component {
       height: 55,
       width: 500,
     },
-    modaldesign: {
-      backgroundColor: '#ffffff',
-      marginHorizontal: 200,
-      marginVertical: 400,
-      height: 150,
-      width: 300,
-      alignSelf: 'center',
-      borderRadius: 20,
-      borderColor: '#000000',
-      borderWidth: 1,
-    },
     modalfield: {
-      marginTop: 20,
-      height: 100,
+      margin: 10,
       fontSize: 30,
     },
     placeholder: {
