@@ -3,6 +3,7 @@ import {View, Text, StyleSheet, ImageBackground} from 'react-native';
 import {ScrollView} from 'react-native-gesture-handler';
 import SlotDetailListItem from '../../components/SlotDetailListItem';
 import Button from '../../components/Button';
+import ConfirmDialog from '../../components/ConfirmDialog';
 
 const startSlot = (data, setData, setDataRoot) => () => {
   setData({...data, validated: '0'});
@@ -20,6 +21,8 @@ const studentList = (navigation, isOTP, slotId) => () => {
 
 const SlotDetail = ({route, navigation}) => {
   const {slotId} = route.params;
+  const [showStartDialog, setShowStartDialog] = useState(false);
+  const [showEndDialog, setShowEndDialog] = useState(false);
 
   //data=> subject,topicname,slottime,status,validated,currentstudents,maxstudents
   const [data, setData] = useState(route.params.data);
@@ -90,7 +93,7 @@ const SlotDetail = ({route, navigation}) => {
                 <View style={styles.footer}>
                   <Button
                     labelText="Start Slot"
-                    callback={startSlot(data, setData, route.params.setData)}
+                    callback={() => setShowStartDialog(true)}
                   />
                   <Button
                     labelText="Students"
@@ -101,7 +104,7 @@ const SlotDetail = ({route, navigation}) => {
                 <View style={styles.footer}>
                   <Button
                     labelText="End Slot"
-                    callback={endSlot(data, setData, route.params.setData)}
+                    callback={() => setShowEndDialog(true)}
                   />
                   <Button
                     labelText="Verify OTPs"
@@ -118,6 +121,20 @@ const SlotDetail = ({route, navigation}) => {
           )}
         </ScrollView>
       </ImageBackground>
+      {/* start slots confirmation dialog */}
+      <ConfirmDialog
+        text="Do you want to start?"
+        visible={showStartDialog}
+        cancel={() => setShowStartDialog(false)}
+        callback={startSlot(data, setData, route.params.setData)}
+      />
+      {/* end slot confirmation dialog */}
+      <ConfirmDialog
+        text="Do you want to end?"
+        visible={showEndDialog}
+        cancel={() => setShowEndDialog(false)}
+        callback={endSlot(data, setData, route.params.setData)}
+      />
     </View>
   );
 };

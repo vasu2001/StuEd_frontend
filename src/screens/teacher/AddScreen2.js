@@ -15,6 +15,7 @@ import moment from 'moment';
 import {ScrollView} from 'react-native-gesture-handler';
 import Snackbar from 'react-native-snackbar';
 import NotificationService from '../../services/notificationService';
+import ConfirmDialog from '../../components/ConfirmDialog';
 
 var gender = [
   {label: 'Boys', value: 'male'},
@@ -33,6 +34,7 @@ export default class AddScreen2 extends React.Component {
       venue1: '',
       venue2: '',
       genderPreference: 'male',
+      showSubmitDialog: false,
     };
     this.notification = new NotificationService();
   }
@@ -43,20 +45,6 @@ export default class AddScreen2 extends React.Component {
   }
 
   submit = () => {
-    if (
-      this.state.chosenDate === '' ||
-      this.state.maxStudents === '' ||
-      this.state.venue1 === '' ||
-      this.state.fees === ''
-    ) {
-      Snackbar.show({
-        text: 'Provide all details',
-        duration: Snackbar.LENGTH_SHORT,
-        backgroundColor: '#7785AC',
-      });
-      return;
-    }
-
     const data = {
       ...this.props.route.params,
       slotTime: this.state.chosenDate,
@@ -71,6 +59,24 @@ export default class AddScreen2 extends React.Component {
     console.log(data);
     //onSuccess
     this.notification.scheduleNotification(data.slotTime, data.topicName);
+  };
+
+  validate = () => {
+    if (
+      this.state.chosenDate === '' ||
+      this.state.maxStudents === '' ||
+      this.state.venue1 === '' ||
+      this.state.venue2 === '' ||
+      this.state.fees === ''
+    ) {
+      Snackbar.show({
+        text: 'Provide all details',
+        duration: Snackbar.LENGTH_SHORT,
+        backgroundColor: '#7785AC',
+      });
+      return false;
+    }
+    return true;
   };
 
   handlePicker = datetime => {
@@ -187,7 +193,10 @@ export default class AddScreen2 extends React.Component {
             </View>
 
             <View style={styles.buttonView}>
-              <TouchableOpacity onPress={this.submit}>
+              <TouchableOpacity
+                onPress={() => {
+                  if (this.validate()) this.setState({showSubmitDialog: true});
+                }}>
                 <Image
                   style={styles.buttonImage}
                   resizeMode="contain"
@@ -197,6 +206,12 @@ export default class AddScreen2 extends React.Component {
             </View>
           </ScrollView>
         </ImageBackground>
+        <ConfirmDialog
+          text="Do you want to add the slot?"
+          callback={this.submit}
+          cancel={() => this.setState({showSubmitDialog: false})}
+          visible={this.state.showSubmitDialog}
+        />
       </View>
     );
   }

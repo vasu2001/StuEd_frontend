@@ -7,17 +7,18 @@ import {
   Image,
   TouchableOpacity,
   Linking,
-  Button,
-  TextInput,
 } from 'react-native';
 import StateContext from '../../context/StateContext';
-import DialogContainer from '../../containers/DialogContainer';
+import ConfirmDialog from '../../components/ConfirmDialog';
+import InputDialog from '../../components/InputDialog';
 
 export default class SettingScreen extends React.Component {
   constructor() {
     super();
     this.state = {
-      show: false,
+      showUserDialog: false,
+      showLogoutDialog: false,
+      showPhoneDialog: false,
     };
   }
 
@@ -53,7 +54,7 @@ export default class SettingScreen extends React.Component {
               <TouchableOpacity
                 style={styles.button}
                 onPress={() => {
-                  this.setState({show: true});
+                  this.setState({showUserDialog: true});
                 }}>
                 <Image
                   style={styles.userimage}
@@ -61,34 +62,12 @@ export default class SettingScreen extends React.Component {
                 />
               </TouchableOpacity>
             </View>
-            <DialogContainer
-              visible={this.state.show}
-              cancel={() => this.setState({show: false})}>
-              <TextInput
-                placeholder="Enter new Username"
-                style={styles.modalfield}
-                placeholderTextColor="#7A898B"
-                keyboardType={'default'}
-                underlineColorAndroid={'black'}
-              />
-              <View
-                style={{
-                  flexDirection: 'row',
-                  justifyContent: 'space-around',
-                }}>
-                <Button
-                  title="Close"
-                  onPress={() => {
-                    this.setState({
-                      show: false,
-                    });
-                  }}
-                />
-                <Button title="Save" />
-              </View>
-            </DialogContainer>
             <View style={{flex: 1}}>
-              <TouchableOpacity style={styles.button}>
+              <TouchableOpacity
+                style={styles.button}
+                onPress={() => {
+                  this.setState({showPhoneDialog: true});
+                }}>
                 <Image
                   style={styles.phonenum}
                   source={require('../../assets/latestphone.png')}
@@ -134,7 +113,9 @@ export default class SettingScreen extends React.Component {
               </TouchableOpacity>
             </View>
             <View style={{flex: 1}}>
-              <TouchableOpacity style={styles.button} onPress={this.signout}>
+              <TouchableOpacity
+                style={styles.button}
+                onPress={() => this.setState({showLogoutDialog: true})}>
                 <Image
                   style={styles.logout}
                   source={require('../../assets/logout.png')}
@@ -143,6 +124,34 @@ export default class SettingScreen extends React.Component {
             </View>
           </View>
         </ImageBackground>
+
+        {/* change username dialog */}
+        <InputDialog
+          text="Enter new Username"
+          inputType="default"
+          visible={this.state.showUserDialog}
+          cancel={() => this.setState({showUserDialog: false})}
+          callback={text => {}}
+          validator={text => true}
+        />
+
+        {/* change phoneno dialog */}
+        <InputDialog
+          text="Enter new PhoneNo"
+          inputType="number-pad"
+          visible={this.state.showPhoneDialog}
+          cancel={() => this.setState({showPhoneDialog: false})}
+          callback={text => {}}
+          validator={text => text.length === 10}
+        />
+
+        {/* logout confirm dialog */}
+        <ConfirmDialog
+          visible={this.state.showLogoutDialog}
+          callback={this.signout}
+          cancel={() => this.setState({showLogoutDialog: false})}
+          text="Do you want to logout?"
+        />
       </View>
     );
   }
@@ -197,6 +206,11 @@ export default class SettingScreen extends React.Component {
     },
     placeholder: {
       color: '#000000',
+    },
+    dialogText: {
+      fontSize: 25,
+      margin: 10,
+      paddingBottom: 10,
     },
   });
 }

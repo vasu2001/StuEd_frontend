@@ -1,12 +1,15 @@
 import React, {Component} from 'react';
-import {View, StyleSheet, Text, Image, Alert} from 'react-native';
+import {View, StyleSheet, Text, Image, Alert, Button} from 'react-native';
 import Accordion from 'react-native-collapsible/Accordion';
 import {TouchableOpacity} from 'react-native-gesture-handler';
 import NotificationService from '../services/notificationService';
 import moment from 'moment';
+import ConfirmDialog from './ConfirmDialog';
 
 var fetchedData = [];
 //slotIds=[{slotId,slotTime,started,currentStudents,maxStudents},..]
+
+var globalBuyData = {};
 
 class SlotsExpandableView extends Component {
   constructor(props) {
@@ -18,6 +21,7 @@ class SlotsExpandableView extends Component {
   state = {
     activeSections: [0],
     slotsFetched: [],
+    showBuyDialog: false,
   };
 
   //Permissions to use notifications
@@ -25,7 +29,7 @@ class SlotsExpandableView extends Component {
     Alert.alert('Permissions', JSON.stringify(perms));
   }
 
-  buy = (section, data) => () => {
+  buy = ({section, data}) => {
     //payment api triggering
     //....
     //onSuccesfull payment & booking res={status,OTP}
@@ -175,7 +179,11 @@ class SlotsExpandableView extends Component {
           <View style={styles.buyContainer}>
             <TouchableOpacity
               style={styles.buyButton}
-              onPress={this.buy(section, data)}>
+              onPress={() => {
+                globalBuyData = {section, data};
+                this.setState({showBuyDialog: true});
+              }}>
+              {/* this.buy(section, data) */}
               <Image
                 source={require('../assets/buyicon.png')}
                 style={styles.buyIcon}
@@ -195,14 +203,29 @@ class SlotsExpandableView extends Component {
     const {slotIds} = this.props;
 
     return (
-      <Accordion
-        sections={slotIds}
-        activeSections={this.state.activeSections}
-        renderHeader={this._renderHeader}
-        renderContent={this._renderContent}
-        onChange={this._updateSections}
-        touchableComponent={TouchableOpacity}
-      />
+      <>
+        <Accordion
+          sections={slotIds}
+          activeSections={this.state.activeSections}
+          renderHeader={this._renderHeader}
+          renderContent={this._renderContent}
+          onChange={this._updateSections}
+          touchableComponent={TouchableOpacity}
+        />
+        {/* buy confirm dialog */}
+        <ConfirmDialog
+          visible={this.state.showBuyDialog}
+          callback={() => {
+            if (
+              globalBuyData.section !== undefined &&
+              globalBuyData.data !== undefined
+            )
+              this.buy(globalBuyData);
+          }}
+          cancel={() => this.setState({showBuyDialog: false})}
+          text="Do you want to buy?"
+        />
+      </>
     );
   }
 }

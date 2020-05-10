@@ -1,5 +1,5 @@
 import React from 'react';
-import {View, Modal, Text, StyleSheet} from 'react-native';
+import {View, Modal, StyleSheet} from 'react-native';
 
 export default (DialogContainer = ({visible, children, cancel}) => {
   return (
@@ -7,7 +7,8 @@ export default (DialogContainer = ({visible, children, cancel}) => {
       visible={visible}
       animationType="fade"
       transparent={true}
-      onRequestClose={cancel}>
+      onRequestClose={cancel}
+      hardwareAccelerated>
       <View style={styles.backdrop}>
         <View style={styles.dialog}>{children}</View>
       </View>
