@@ -19,22 +19,18 @@ export default (LoginSignup = () => {
         name="Signup"
         component={signup1}
         options={{
-          headerStyle: {
-            backgroundColor: '#50C9CE',
-          },
           headerTintColor: '#fff',
           headerTitleStyle: {
             fontWeight: 'bold',
           },
+          headerTransparent: true,
         }}
       />
       <Stack.Screen
         name="Verify OTP"
         component={signup2}
         options={{
-          headerStyle: {
-            backgroundColor: '#50C9CE',
-          },
+          headerTransparent: true,
           headerTintColor: '#fff',
           headerTitleStyle: {
             fontWeight: 'bold',
@@ -45,9 +41,7 @@ export default (LoginSignup = () => {
         name="Forget Password"
         component={signup3}
         options={{
-          headerStyle: {
-            backgroundColor: '#50C9CE',
-          },
+          headerTransparent: true,
           headerTintColor: '#fff',
           headerTitleStyle: {
             fontWeight: 'bold',

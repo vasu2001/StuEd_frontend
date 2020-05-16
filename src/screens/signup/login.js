@@ -142,7 +142,7 @@ export default class Login extends Component {
               Dont have an Account?
             </Text>
             <TouchableOpacity onPress={this.signup}>
-              <Text style={{fontSize: 20, color: 'white'}}>Sign up!</Text>
+              <Text style={styles.signupButton}>Sign up!</Text>
             </TouchableOpacity>
           </View>
         </ImageBackground>
@@ -208,6 +208,12 @@ const styles = StyleSheet.create({
     width: 130,
     height: 50,
     paddingTop: 20,
+  },
+  signupButton: {
+    fontSize: 20,
+    color: 'white',
+    textDecorationLine: 'underline',
+    textDecorationColor: 'white',
   },
 });
 const pickerSelectStyles = StyleSheet.create({

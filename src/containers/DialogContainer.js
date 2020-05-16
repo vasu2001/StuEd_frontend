@@ -18,7 +18,7 @@ export default (DialogContainer = ({visible, children, cancel}) => {
 
 const styles = StyleSheet.create({
   backdrop: {
-    backgroundColor: 'rgba(0,0,0,0.6)',
+    backgroundColor: 'rgba(255,255,255,0.6)',
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
@@ -28,6 +28,5 @@ const styles = StyleSheet.create({
     backgroundColor: '#ffffff',
     borderRadius: 10,
     elevation: 5,
-    borderWidth: 1,
   },
 });
